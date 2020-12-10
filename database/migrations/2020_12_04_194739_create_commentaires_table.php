@@ -17,7 +17,7 @@ class CreateCommentairesTable extends Migration
             $table->id();
             $table->string('commentaire');
             $table->dateTime('date_com')->default((new \DateTime())->format('Y-m-d'));
-            $table->integer('note')->default(0);
+            $table->integer('note')->default(0)->nullable(true);
             $table->unsignedBigInteger('jeu_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('jeu_id')->references('id')->on('jeux')

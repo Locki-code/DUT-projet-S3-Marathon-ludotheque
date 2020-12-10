@@ -37,6 +37,9 @@
                         Nombre de joueur : {{ $jeu->nombre_joueurs }}
                     </p>
                     <hr><hr>
+                        @auth
+                        <a type="button" href="{{route('commentaires.create', ['jeu_id'=> $jeu->id])}}">Ajouter un commentaire</a>
+                        @endauth
                         <a href="{{ URL::route('jeu_rules', $jeu->id) }}" class="btn btn-primary">Regarder les régles du jeu</a>
                     <hr><hr>
                 </div>
