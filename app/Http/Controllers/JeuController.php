@@ -93,6 +93,9 @@ class JeuController extends Controller
                 'description' => 'required',
                 'theme' => 'required',
                 'editeur' => 'required',
+                'langue' => 'required',
+                'age' => 'required',
+                'image' => 'file|max:500000'
             ],
             [
                 'nom.required' => 'Le nom est requis',
@@ -100,6 +103,9 @@ class JeuController extends Controller
                 'description.required' => 'La description est requise',
                 'theme.required' => 'Le théme est requis',
                 'editeur.required' => 'L\'editeur est requis',
+                'langue.required' => 'la langues est requise',
+                'age.required' => 'l\'age est requise',
+                'image.file' => 'Poids max 500Ko'
             ]
         );
 
@@ -110,8 +116,38 @@ class JeuController extends Controller
         $jeu->user_id = Auth::user()->id;
         $jeu->editeur_id = $request->editeur;
         $jeu->url_media = 'https://picsum.photos/seed/'.$jeu->nom.'/200/200';
+        $jeu->langue = $request->langue;
+        $jeu->age = $request->age;
+        $jeu->nombre_joueurs = $request->nombre_joueurs;
+        $jeu->duree = $request->duree;
+        $jeu->categorie = $request->categorie;
+
+        if($request->file('image') !== null){
+
+            $file = $request->file('image');
+
+
+            $extension = $file->getClientOriginalExtension();
+
+            // File upload location
+            $location = public_path().'/imagesjeux/';
+
+            $filename = uniqid().'.'.$extension;
+
+            // Upload file
+            $file->move($location, $filename);
+
+            $jeu->url_media = '/imagesjeux/'.$filename;
+
+        }
+
 
         $jeu->save();
+
+        $jeu->mecaniques()->attach($request->avec_mecaniques);
+
+        $jeu->save();
+
 
         return Redirect::route('jeu_index');
     }

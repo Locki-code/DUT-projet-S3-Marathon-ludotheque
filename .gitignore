@@ -249,3 +249,7 @@ storage/*.key
 composer.phar
 
 .idea/
+
+
+public/imagesjeux/*
+!public/imagesjeux/.gitkeep
