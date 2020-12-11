@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
+use App\Services\JeuxInformation;
+use App\Services\JeuxPrice;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,17 +35,31 @@ class JeuController extends Controller
         } else{
 
             $jeux = Jeu::all();
-            if($filter === 'theme'){
-                $tabJeux = [];
-                foreach($jeux as $jeu){
-                    if($jeu->theme->id == $sort){
-                        $tabJeux[] = $jeu;
+            $tabJeux = [];
+
+            switch($filter){
+                case 'theme':
+                    foreach($jeux as $jeu){
+                        if($jeu->theme->id == $sort){
+                            $tabJeux[] = $jeu;
+                        }
                     }
-                }
-
-                $jeux = $tabJeux;
+                    break;
+                case 'editeur':
+                    foreach($jeux as $jeu){
+                        if($jeu->editeur->id == $sort){
+                            $tabJeux[] = $jeu;
+                        }
+                    }
+                    break;
+                case 'mecaniques':
+                    foreach($jeux as $jeu){
+                        if(in_array($sort, $jeu->mecaniques()->pluck('mecaniques.id')->toArray())){
+                            $tabJeux[] = $jeu;
+                        }
+                    }
             }
-
+            $jeux = $tabJeux;
         }
 
         return view('jeu.index', ['jeux' => $jeux, 'sort' => $sort, 'filter' => $filter]);
@@ -55,13 +71,20 @@ class JeuController extends Controller
      * @param int $id
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show($id, JeuxInformation $jeuxInformation, JeuxPrice $jeuxPrice)
     {
         $jeux = Jeu::all();
 
         $jeu = $jeux->find($id);
 
-        return view('jeu.show', ['jeu' => $jeu]);
+        $jeuxInformation->setJeu($jeu);
+        $jeuxPrice->setJeu($jeu);
+
+        $jeuxInformation->calculate();
+        $jeuxPrice->calculate();
+
+
+        return view('jeu.show', ['jeu' => $jeu, 'jeuxInformation' => $jeuxInformation, 'jeuxPrice' => $jeuxPrice]);
     }
 
     /**
@@ -106,7 +129,7 @@ class JeuController extends Controller
                 'editeur' => 'required',
                 'langue' => 'required',
                 'age' => 'required',
-                'image' => 'file|max:500000'
+                'image' => 'file|max:500000',
             ],
             [
                 'nom.required' => 'Le nom est requis',
@@ -116,7 +139,7 @@ class JeuController extends Controller
                 'editeur.required' => 'L\'editeur est requis',
                 'langue.required' => 'la langues est requise',
                 'age.required' => 'l\'age est requise',
-                'image.file' => 'Poids max 500Ko'
+                'image.file' => 'Poids max 500Ko',
             ]
         );
 
