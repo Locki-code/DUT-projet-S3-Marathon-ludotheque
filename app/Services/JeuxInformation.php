@@ -13,19 +13,19 @@ class JeuxInformation{
 
     private $Jeu;
 
-    private $average;
+    private $average = 0;
 
-    private $max;
+    private $max = 0;
 
-    private $min;
+    private $min = 0;
 
-    private $nbComment;
+    private $nbComment = 0;
 
-    private $nbCommentTotal;
+    private $nbCommentTotal = 0;
 
-    private $rankInTheme;
+    private $rankInTheme = 0;
 
-    private $nbRankInTheme;
+    private $nbRankInTheme = 0;
 
 
     public function calculate(){
@@ -35,35 +35,38 @@ class JeuxInformation{
         foreach($this->Jeu->commentaires as $comment){
             $notes[] = $comment->note;
         }
+        if(count($notes) !== 0){
 
 
-        $this->max = max($notes);
-        $this->min = min($notes);
-        $this->average = array_sum($notes)/count($notes);
+            $this->max = max($notes);
+            $this->min = min($notes);
+            $this->average = array_sum($notes) / count($notes);
 
 
-        $this->nbComment = count($notes);
+            $this->nbComment = count($notes);
 
 
-        $this->nbCommentTotal = count(Commentaire::all());
+            $this->nbCommentTotal = count(Commentaire::all());
 
-        $Averages  = [];
-        foreach(Jeu::all() as $jeu){
+            $Averages = [];
+            foreach(Jeu::all() as $jeu){
 
-            if($jeu->id !== $this->Jeu->id && $jeu->theme->id === $this->Jeu->theme->id){
-                $notesJeu = [];
-                foreach($jeu->commentaires as $comment){
-                    $notesJeu[] = $comment->note;
+                if($jeu->id !== $this->Jeu->id && $jeu->theme->id === $this->Jeu->theme->id){
+                    $notesJeu = [];
+                    foreach($jeu->commentaires as $comment){
+                        $notesJeu[] = $comment->note;
+                    }
+                    if(count($notesJeu) !== 0){
+                        $Averages[] = array_sum($notesJeu) / count($notesJeu);
+                    }
                 }
-                $Averages[] = array_sum($notesJeu)/count($notesJeu);
             }
+
+            $Averages[] = $this->average;
+            rsort($Averages);
+            $this->rankInTheme = array_search($this->average, $Averages) + 1;
+            $this->nbRankInTheme = count($Averages);
         }
-
-        $Averages[] = $this->average;
-        rsort($Averages);
-        $this->rankInTheme = array_search($this->average, $Averages) + 1;
-        $this->nbRankInTheme = count($Averages);
-
     }
 
     /**

@@ -51,12 +51,16 @@
                 <div class="card-body">
                     <h5 class="card-title">Statistique de {{ $jeu->nom }}</h5>
                     <p class="card-text">
+                        @if ($jeuxInformation->getNbComment() !== 0)
                         <strong>Nombre de note/commentaire : </strong>{{ $jeuxInformation->getNbComment() }} <br />
                         <strong>Note Moyenne : </strong>{{ $jeuxInformation->getAverage() }} <br />
                         <strong>Note la plus haute: </strong>{{ $jeuxInformation->getMax() }} <br />
                         <strong>Note la plus basse : </strong>{{ $jeuxInformation->getMin() }} <br />
                         <strong>Nombre de commentaire: </strong>{{ $jeuxInformation->getNbComment() }} / {{ $jeuxInformation->getNbCommentTotal()  }} <br />
                         <strong>Position du jeu dans le théme {{ $jeuxInformation->getRankInTheme() }} sur {{ $jeuxInformation->getNbRankInTheme() }}<br />
+                        @else
+                                <strong>Pas de statistique !</strong>
+                        @endif
                     </p>
                 </div>
             </div>
