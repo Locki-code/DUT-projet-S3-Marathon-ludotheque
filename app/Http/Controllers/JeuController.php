@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
+use App\Services\JeuxInformation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,13 +70,17 @@ class JeuController extends Controller
      * @param int $id
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show($id, JeuxInformation $jeuxInformation)
     {
         $jeux = Jeu::all();
 
         $jeu = $jeux->find($id);
 
-        return view('jeu.show', ['jeu' => $jeu]);
+        $jeuxInformation->setJeu($jeu);
+
+        $jeuxInformation->calculate();
+
+        return view('jeu.show', ['jeu' => $jeu, 'jeuxInformation' => $jeuxInformation]);
     }
 
     /**
