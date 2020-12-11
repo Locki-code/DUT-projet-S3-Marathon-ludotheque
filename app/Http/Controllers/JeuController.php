@@ -49,6 +49,13 @@ class JeuController extends Controller
                             $tabJeux[] = $jeu;
                         }
                     }
+                    break;
+                case 'mecaniques':
+                    foreach($jeux as $jeu){
+                        if(in_array($sort, $jeu->mecaniques()->pluck('mecaniques.id')->toArray())){
+                            $tabJeux[] = $jeu;
+                        }
+                    }
             }
             $jeux = $tabJeux;
         }

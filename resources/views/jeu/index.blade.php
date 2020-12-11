@@ -33,7 +33,7 @@
                 @endif
             </div>
         </div>
-        <div class="col-4 text-left">
+        <div class="col-4 text-center">
 
             <div class="form-inline">
                 <label for="editeur">Editeur</label>
@@ -52,7 +52,24 @@
                 @endif
             </div>
         </div>
-        <div class="col-3 text-right">
+        <div class="col-4 text-center">
+            <div class="form-inline">
+                <label for="editeur">Mécaniques</label>
+                <select class="form-control" name="mecaniques"
+                        onchange="window.location= '{{ URL::route('jeu_index', 'mecaniques') }}/'+this.options[this.selectedIndex].value ">
+                    @foreach( \App\Models\Mecanique::all() as $mecaniques)
+                        @if ($filter === 'mecaniques' && $sort == $mecaniques->id)
+                            <option value="{{ $mecaniques->id }}" selected>{{ $mecaniques->nom }}</option>
+                        @else
+                            <option value="{{ $mecaniques->id }}">{{ $mecaniques->nom }}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @if ($filter === 'mecaniques')
+                    <a href="{{ URL::route('jeu_index', ['filter' => 'name', 'sort' => null]) }}">Réinit</a>
+                @endif
+        </div>
+        <div class="col-12 text-right">
             @if ($filter === 'name')
                 <a href="{{ URL::route('jeu_index', ['filter' => 'name', 'sort' =>$sort]) }}">Trié par
                     nom <i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i></a>
