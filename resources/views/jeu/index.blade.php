@@ -6,11 +6,14 @@
 
     <h1 class="text-center">Tous les jeux de la super ludotheque de l'IUT de Lens</h1>
     <div class="row">
-        <div class="col-2 text-left">
+        <div class="col-12 text-left">
             @auth
                 <a class="btn btn-success" href="{{ URL::route('jeu_create') }}">Ajouter un jeu</a>
             @endauth
         </div>
+    </div>
+    </div>
+    <div class="row">
         <div class="col-4 text-left">
 
             <div class="form-inline">
@@ -30,7 +33,26 @@
                 @endif
             </div>
         </div>
-        <div class="col-6 text-right">
+        <div class="col-4 text-left">
+
+            <div class="form-inline">
+                <label for="editeur">Editeur</label>
+                <select class="form-control" name="editeur"
+                        onchange="window.location= '{{ URL::route('jeu_index', 'editeur') }}/'+this.options[this.selectedIndex].value ">
+                    @foreach( \App\Models\Editeur::all() as $editeur)
+                        @if ($filter === 'editeur' && $sort == $editeur->id)
+                            <option value="{{ $editeur->id }}" selected>{{ $editeur->nom }}</option>
+                        @else
+                            <option value="{{ $editeur->id }}">{{ $editeur->nom }}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @if ($filter === 'editeur')
+                    <a href="{{ URL::route('jeu_index', ['filter' => 'name', 'sort' => null]) }}">Réinit</a>
+                @endif
+            </div>
+        </div>
+        <div class="col-3 text-right">
             @if ($filter === 'name')
                 <a href="{{ URL::route('jeu_index', ['filter' => 'name', 'sort' =>$sort]) }}">Trié par
                     nom <i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i></a>

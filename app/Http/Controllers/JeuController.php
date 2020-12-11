@@ -33,17 +33,24 @@ class JeuController extends Controller
         } else{
 
             $jeux = Jeu::all();
-            if($filter === 'theme'){
-                $tabJeux = [];
-                foreach($jeux as $jeu){
-                    if($jeu->theme->id == $sort){
-                        $tabJeux[] = $jeu;
+            $tabJeux = [];
+
+            switch($filter){
+                case 'theme':
+                    foreach($jeux as $jeu){
+                        if($jeu->theme->id == $sort){
+                            $tabJeux[] = $jeu;
+                        }
                     }
-                }
-
-                $jeux = $tabJeux;
+                    break;
+                case 'editeur':
+                    foreach($jeux as $jeu){
+                        if($jeu->editeur->id == $sort){
+                            $tabJeux[] = $jeu;
+                        }
+                    }
             }
-
+            $jeux = $tabJeux;
         }
 
         return view('jeu.index', ['jeux' => $jeux, 'sort' => $sort, 'filter' => $filter]);
@@ -106,7 +113,7 @@ class JeuController extends Controller
                 'editeur' => 'required',
                 'langue' => 'required',
                 'age' => 'required',
-                'image' => 'file|max:500000'
+                'image' => 'file|max:500000',
             ],
             [
                 'nom.required' => 'Le nom est requis',
@@ -116,7 +123,7 @@ class JeuController extends Controller
                 'editeur.required' => 'L\'editeur est requis',
                 'langue.required' => 'la langues est requise',
                 'age.required' => 'l\'age est requise',
-                'image.file' => 'Poids max 500Ko'
+                'image.file' => 'Poids max 500Ko',
             ]
         );
 
