@@ -64,6 +64,22 @@
                     </p>
                 </div>
             </div>
+            <div class="card">
+                <img src="https://media.istockphoto.com/photos/rendering-golden-dollar-sign-isolated-on-white-background-picture-id1005918128?k=6&m=1005918128&s=612x612&w=0&h=VLK7AsPAAp4U7HpFr-TZF5oh11wzvSidWhRvOs46SKk=" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Tarif de {{ $jeu->nom }}</h5>
+                    <p class="card-text">
+                        @if ($jeuxPrice->getNbAchat() !== 0)
+                            <strong>Prix Moyen : </strong>{{ $jeuxPrice->getAverage() }} <br />
+                            <strong>Prix le plus haut: </strong>{{ $jeuxPrice->getMax() }} <br />
+                            <strong>Prix le plus bas : </strong>{{ $jeuxPrice->getMin() }} <br />
+                            <strong>Nombre d'exemplaires : </strong>{{ $jeuxPrice->getNbAchat() }} / {{ $jeuxPrice->getNbUsers() }}<br />
+                                @else
+                                    <strong>Pas de tarif !</strong>
+                        @endif
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
     <a href="{{ URL::route('jeu_index') }}" class="btn btn-secondary">Retour à la liste des jeux</a>

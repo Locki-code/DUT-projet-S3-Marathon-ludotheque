@@ -6,6 +6,7 @@ use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
 use App\Services\JeuxInformation;
+use App\Services\JeuxPrice;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,17 +71,20 @@ class JeuController extends Controller
      * @param int $id
      * @return \Illuminate\View\View
      */
-    public function show($id, JeuxInformation $jeuxInformation)
+    public function show($id, JeuxInformation $jeuxInformation, JeuxPrice $jeuxPrice)
     {
         $jeux = Jeu::all();
 
         $jeu = $jeux->find($id);
 
         $jeuxInformation->setJeu($jeu);
+        $jeuxPrice->setJeu($jeu);
 
         $jeuxInformation->calculate();
+        $jeuxPrice->calculate();
 
-        return view('jeu.show', ['jeu' => $jeu, 'jeuxInformation' => $jeuxInformation]);
+
+        return view('jeu.show', ['jeu' => $jeu, 'jeuxInformation' => $jeuxInformation, 'jeuxPrice' => $jeuxPrice]);
     }
 
     /**
