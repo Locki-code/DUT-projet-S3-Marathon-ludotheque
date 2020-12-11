@@ -19,23 +19,34 @@ class JeuController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index($sort = null)
+    public function index($filter = 'name', $sort = null)
     {
-        $filter = null;
-        if($sort !== null){
-            if($sort){
+
+        if($filter === 'name'){
+            if($sort || $sort === null){
                 $jeux = Jeu::all()->sortBy('nom');
+                $sort = 0;
             } else{
                 $jeux = Jeu::all()->sortByDesc('nom');
+                $sort = 1;
             }
-            $sort = !$sort;
-            $filter = true;
         } else{
+
             $jeux = Jeu::all();
-            $sort = true;
+            if($filter === 'theme'){
+                $tabJeux = [];
+                foreach($jeux as $jeu){
+                    if($jeu->theme->id == $sort){
+                        $tabJeux[] = $jeu;
+                    }
+                }
+
+                $jeux = $tabJeux;
+            }
+
         }
-        Log::info(url($jeux[0]->url_media));
-        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
+
+        return view('jeu.index', ['jeux' => $jeux, 'sort' => $sort, 'filter' => $filter]);
     }
 
     /**

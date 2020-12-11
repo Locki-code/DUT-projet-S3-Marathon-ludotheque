@@ -31,7 +31,9 @@ Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeu_create')
 
 Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store')->middleware('auth');
 
-Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
+Route::get('/jeux/{filter?}/{sort?}', [JeuController::class, 'index'])
+    ->where('filter', '[a-z]+')
+    ->name('jeu_index');
 
 Route::prefix('commentaires')->middleware('auth')->group(function () {
     Route::get('/create/{jeu_id}', [\App\Http\Controllers\CommentaireController::class, 'create'])
