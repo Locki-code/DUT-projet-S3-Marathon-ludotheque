@@ -43,4 +43,6 @@ Route::prefix('commentaires')->middleware('auth')->group(function () {
 
 Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'profil'])->name('users.profile');
+    Route::get('/achat', [UserController::class, 'createAchat'])->name('users.achat');
+    Route::post('/achat', [UserController::class, 'achatStore'])->name('users.achatStore');
 });

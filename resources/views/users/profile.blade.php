@@ -42,7 +42,7 @@
                     </div>
                     <div class="tab-pane" id="achats">
                         <h2 class="mb-4">Liste des jeux dans ma ludothèque personnelle</h2>
-                        <a href="">Ajouter un achat</a>
+                        <a href="{{route('users.achat')}}">Ajouter un achat</a>
                         @foreach(Auth::user()->ludo_perso as $jeu)
                             <p class="text-4xl text-bold">{{$jeu->nom}}</p>
                             <h6>Achat {{\App\Services\DateService::diff($jeu->achat->date_achat)}} <span> (le {{\App\Services\DateService::dateJour($jeu->achat->date_achat)}})</span>
