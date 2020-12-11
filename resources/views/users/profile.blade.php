@@ -44,6 +44,8 @@
                         <h2 class="mb-4">Liste des jeux dans ma ludothèque personnelle</h2>
                         <a href="{{route('users.achat')}}">Ajouter un achat</a>
                         @foreach(Auth::user()->ludo_perso as $jeu)
+                            <x-achat-jeu :jeu="$jeu" :user="Auth::user()"></x-achat-jeu>
+{{--
                             <p class="text-4xl text-bold">{{$jeu->nom}}</p>
                             <h6>Achat {{\App\Services\DateService::diff($jeu->achat->date_achat)}} <span> (le {{\App\Services\DateService::dateJour($jeu->achat->date_achat)}})</span>
                             </h6>
@@ -52,6 +54,8 @@
                             <h6>Prix</h6>
                             <p class="text-2xl text-bold">{{$jeu->achat->prix}}</p>
                             <x-card-jeu :jeu="$jeu"></x-card-jeu>
+--}}
+                            <a type="button" href="{{route('users.afficheAchat', ['id' => $jeu->id])}}">Supprimer le jeu</a>
                         @endforeach
                     </div>
                     <div class="tab-pane" id="commentaires">

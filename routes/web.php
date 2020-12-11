@@ -47,4 +47,6 @@ Route::prefix('users')->middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'profil'])->name('users.profile');
     Route::get('/achat', [UserController::class, 'createAchat'])->name('users.achat');
     Route::post('/achat', [UserController::class, 'achatStore'])->name('users.achatStore');
+    Route::get('/achat/supprime/{id}', [UserController::class, 'afficheAchat'])->name('users.afficheAchat');
+    Route::delete('/achat/{id}', [UserController::class, 'supprimeAchat'])->name('users.supprimeAchat');
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jeu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,21 @@ class UserController extends Controller {
         $user = Auth::user();
         $user->ludo_perso()->attach($request->jeu_id, ['prix' => $request->prix, 'date_achat' => $request->date_achat, 'lieu' => $request->lieu]);
         $user->save();
+        return redirect()->route('users.profile');
+    }
+
+    function afficheAchat($id) {
+        $user = Auth::user();
+        $jeu = $user->ludo_perso()->where('jeu_id', $id)->first();
+        Log::info($jeu);
+        return view('users.afficheAchat', ['jeu' => $jeu]);
+    }
+
+    function supprimeAchat(Request $request,$id) {
+        if ($request->delete == 'valide') {
+            $user = Auth::user();
+            $user->ludo_perso()->detach($id);
+        }
         return redirect()->route('users.profile');
     }
 }
