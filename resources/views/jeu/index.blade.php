@@ -12,7 +12,6 @@
             @endauth
         </div>
     </div>
-    </div>
     <div class="row">
         <div class="col-4 text-left">
 
@@ -68,6 +67,7 @@
                 @if ($filter === 'mecaniques')
                     <a href="{{ URL::route('jeu_index', ['filter' => 'name', 'sort' => null]) }}">Réinit</a>
                 @endif
+            </div>
         </div>
         <div class="col-12 text-right">
             @if ($filter === 'name')
