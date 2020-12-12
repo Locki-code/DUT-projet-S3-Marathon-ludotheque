@@ -54,9 +54,9 @@ Pour le front
 - `npm install`
 - `npm run dev`
 
-Si vous avez des erreurs a la compilation du front (npm run install), vous devez :
+Si vous avez des erreurs à la compilation du front (npm run install), vous devez :
 
-- Supprimer le répertoire `node_modules`
+- Supprimer le répertoire `node_modules`git 
 - Supprimer le fichier `package-lock.json`
 
 et refaire les deux commandes précédentes 
