@@ -32,6 +32,7 @@ class CommentaireController extends Controller {
         $commentaire = new Commentaire();
         $commentaire->commentaire = $request->commentaire;
         $commentaire->note = $request->get('note', null);
+        $commentaire->date_com = new \DateTime('now');
         $commentaire->jeu_id = $request->jeu_id;
         $commentaire->user_id = Auth::user()->id;
         $commentaire->save();

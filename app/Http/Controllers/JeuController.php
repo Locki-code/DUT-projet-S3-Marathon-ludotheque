@@ -71,17 +71,25 @@ class JeuController extends Controller
      * @param int $id
      * @return \Illuminate\View\View
      */
-    public function show($id, JeuxInformation $jeuxInformation, JeuxPrice $jeuxPrice)
+    public function show(Request $request, $id/*,JeuxInformation $jeuxInformation, JeuxPrice $jeuxPrice*/)
     {
-        $jeux = Jeu::all();
+//        $jeux = Jeu::all();
+        $sort = $request->get('sort',null);
 
-        $jeu = $jeux->find($id);
+        $jeuxInformation = new JeuxInformation;
+        $jeuxPrice = new JeuxPrice;
 
+        $jeu = Jeu::find($id);
         $jeuxInformation->setJeu($jeu);
         $jeuxPrice->setJeu($jeu);
 
         $jeuxInformation->calculate();
         $jeuxPrice->calculate();
+
+        $sort = $request->get('sort',null);
+        if (isset($sort)) {
+            $jeuxInformation->setTriComments(1);
+        }
 
 
         return view('jeu.show', ['jeu' => $jeu, 'jeuxInformation' => $jeuxInformation, 'jeuxPrice' => $jeuxPrice]);

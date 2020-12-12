@@ -49,7 +49,11 @@
                 </div>
                 <div>
                     <h3>Liste des commentaires</h3>
-                    @if ($jeu->commentaires()->count() > 0)
+                    <div class="col-12 text-right">
+                            <a href="{{ URL::route('jeu_show', ['id' => $jeu, 'sort' =>'chrono']) }}">Trié par date</a>
+                    </div>
+
+                @if ($jeuxInformation->getCommentaires()->count() > 0)
                         <table class="table">
                             <thead class="thead-light">
                             <tr>
@@ -60,7 +64,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($jeu->commentaires as $commentaire)
+                            @foreach($jeuxInformation->getCommentaires() as $commentaire)
                                 <tr>
                                     <td  scope="row">{{$commentaire->user->name}}</td>
                                     <td>{{\App\Services\DateService::diff($commentaire->date_com)}}</td>
