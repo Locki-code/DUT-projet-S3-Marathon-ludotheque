@@ -11,9 +11,37 @@ Dans cette version du projet vous trouverez :
 - Le framework [bootstrap](https://getbootstrap.com/)
 - Les icons de la font d'icons [awesome](https://fontawesome.com/) (version free)
 
+
+## Les commandes de départ
+
+- `composer install`
+- `cp .env.example .env`
+- `php artisan key:generate`
+
+Pour l'utilisation d'une base de données, vous devez modifier votre fichier `.env` et indiquer les informations de connexion vers votre base de données.
+
+- `php artisan migrate:fresh`
+- `php artisan db:seed`
+
+Pour le front
+
+- `npm install`
+- `npm run dev`
+
+Si vous avez des erreurs à la compilation du front (`npm run dev`), vous devez :
+
+- Supprimer le répertoire `node_modules`
+- Supprimer le fichier `package-lock.json`
+
+et refaire les deux commandes précédentes
+
+- `npm install`
+- `npm run dev`
+
+
 ### Le modèle de données
 
-![Modèle de données](./doc/images/modeleDonnees.png)
+![Modèle de données](public/images/modeleDonnees.png)
 
 <ul>
 <li><strong>users</strong> : les différents utilisateurs enregistrés dans notre application.
@@ -40,36 +68,26 @@ Dans cette version du projet vous trouverez :
 - Les tables de la base de données vous sont données (voir le répertoire `database/migration`)
 - Les classes pour ajouter des données aléatoires sont données (voir le répertoire `database/seeders`)
 
-
-
-### Les commandes de départ
-
-- `composer install`
-- `php artisan migrate:fresh`
-- `php artisan db:seed`
-- `php artisan key:generate`
-
-Pour le front
-
-- `npm install`
-- `npm run dev`
-
-Si vous avez des erreurs à la compilation du front (npm run install), vous devez :
-
-- Supprimer le répertoire `node_modules`git 
-- Supprimer le fichier `package-lock.json`
-
-et refaire les deux commandes précédentes 
-
-
-- `npm install`
-- `npm run dev`
-
- 
-
-
 ### Votre travail
 
-A partir de cette version initiale, vous devez réaliser les tickets de l'étape 1.
+Après avoir lancer l'application, l'énoncé sera disponible à l'adresse http://localhost:8000/enonce.
 
-BONNE CHANCE !
+A partir de cette version initiale, vous devez réaliser les questions données dans le jalon 1 puis le jalon 2, jalon 3 et projet.
+
+<ol>
+<li>Le code de l'application (backend).</li>
+<li>La charte graphique + logo puis intégration (frontend)</li>
+<li>rédiger un avis sur un jeu (choisi librement)</li>
+<li>la rédaction de règles du jeu en anglais. Attention au plagiat puisque nous passerons tous les textes au
+    logiciel anti-plagiat, redoutablement efficace.
+</li>
+<li>la rédaction (en français) de vos choix relatifs au design.</li>
+<li>Pendant le projet 3 jalons (Milestone) + 1 jalon projet</li>
+
+<li><span style="font-weight: bold">date fin jalon 1 : </span>16/12 à 14h (des tickets simples)</li>
+<li><span style="font-weight: bold">date fin jalon 2 : </span>17/12 à 10h (plus de travail)</li>
+<li><span style="font-weight: bold">date fin jalon 3 + jalon projet :</span> 17/12 à 18h30</li>
+</ol>
+
+
+BON COURAGE !

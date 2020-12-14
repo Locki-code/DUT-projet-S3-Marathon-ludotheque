@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JeuController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +38,11 @@ Route::prefix('commentaires')->middleware('auth')->group(function () {
         ->where('jeu_id', '[0-9]+')
         ->name('commentaires.create');
     Route::post('/store', [\App\Http\Controllers\CommentaireController::class, 'store'])->name('commentaires.store');
+});
+
+
+Route::get('/enonce', function () {
+    return view('enonce.index');
 });
 
 Route::prefix('users')->middleware('auth')->group(function () {
