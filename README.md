@@ -84,7 +84,7 @@ A partir de cette version initiale, vous devez réaliser les questions données 
 <li>la rédaction (en français) de vos choix relatifs au design.</li>
 <li>Pendant le projet 3 jalons (Milestone) + 1 jalon projet</li>
 
-<li><span style="font-weight: bold">date fin jalon 1 : </span>16/12 à 16h (des tickets simples)</li>
+<li><span style="font-weight: bold">date fin jalon 1 : </span>16/12 à 15h30 (des tickets simples)</li>
 <li><span style="font-weight: bold">date fin jalon 2 : </span>17/12 à 11h (plus de travail)</li>
 <li><span style="font-weight: bold">date fin jalon 3 + jalon projet :</span> 17/12 à 18h30</li>
 </ol>
