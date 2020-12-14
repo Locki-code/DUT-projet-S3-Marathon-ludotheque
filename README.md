@@ -70,7 +70,7 @@ et refaire les deux commandes précédentes
 
 ### Votre travail
 
-Après avoir lancer l'application, l'énoncé sera disponible à l'adresse http://localhost:8000/enonce.
+Après avoir lancé l'application, l'énoncé sera disponible à l'adresse http://localhost:8000/enonce.
 
 A partir de cette version initiale, vous devez réaliser les questions données dans le jalon 1 puis le jalon 2, jalon 3 et projet.
 
