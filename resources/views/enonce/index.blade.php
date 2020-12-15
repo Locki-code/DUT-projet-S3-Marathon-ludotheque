@@ -203,7 +203,7 @@
                                         <li> Afficher les informations du jeu</li>
                                     </ul>
                                 </li>
-                                <li><span style="font-weight: bold">Quelle sont les informations du jeu :</span>
+                                <li><span style="font-weight: bold">Quelles sont les informations du jeu :</span>
                                     <ul>
                                         <li> titre</li>
                                         <li> la (les) mécanique(s)</li>
@@ -250,7 +250,7 @@
                         <li>
                             <span style="font-weight: bold">18	Trier la liste des jeux par nom</span>
                             <ul>
-                                <li><span style="font-weight: bold">Qui suis je : </span>N'importe quels visiteurs du
+                                <li><span style="font-weight: bold">Qui suis je : </span>N'importe quel visiteur du
                                     site.
                                 </li>
                                 <li><span style="font-weight: bold">Ou suis je : </span>Sur la page de listing des jeux.
@@ -328,26 +328,26 @@
                         </li>
 
                         <li>
-                            <span style="font-weight: bold">23- Page profile d'un utilisateur</span>
+                            <span style="font-weight: bold">23- Page profil d'un utilisateur</span>
                             <ul>
                                 <li><span style="font-weight: bold">Qui suis-je :</span> Un utilisateur connecté.</li>
                                 <li><span style="font-weight: bold">Ou suis-je :</span>N'importe où sur le site</li>
-                                <li><span style="font-weight: bold">Que dois-je faire :</span> Je dois pouvoir afficher,
+                                <li><span style="font-weight: bold">Que dois-je faire :</span> Je dois pouvoir afficher
                                     une page qui contient les informations de l'utilisateur comme
                                     <ul>
                                         <li>son nom</li>
                                         <li>son adresse mail</li>
                                     </ul>
-                                    <p>D'autres informations viendront compléter la page profile (voir autres questions : ludothèque personnelle</p>
+                                    <p>D'autres informations viendront compléter la page profil (voir autres questions : ludothèque personnelle)</p>
                                 </li>
                             </ul>
                         </li>
 
                         <li>
-                            <span style="font-weight: bold">24- Ajoute l'achat d’un jeu dans ma collection personnelle</span>
+                            <span style="font-weight: bold">24- Ajouter l'achat d’un jeu dans ma collection personnelle</span>
                             <ul>
                                 <li><span style="font-weight: bold">Qui suis-je :</span> Un utilisateur connecté</li>
-                                <li><span style="font-weight: bold">Ou suis-je :</span>Dans la page profile de
+                                <li><span style="font-weight: bold">Ou suis-je :</span>Dans la page profil de
                                     l'utilisateur connecté
                                 </li>
                                 <li><span style="font-weight: bold">Que dois-je faire :</span> Ajouter
@@ -364,7 +364,7 @@
                             <span style="font-weight: bold">25- Suppression de l’achat d’un jeu de ma collection personnelle</span>
                             <ul>
                                 <li><span style="font-weight: bold">Qui suis-je :</span> Un utilisateur connecté</li>
-                                <li><span style="font-weight: bold">Ou suis-je :</span>Dans la page profile de
+                                <li><span style="font-weight: bold">Ou suis-je :</span>Dans la page profil de
                                     l'utilisateur connecté
                                 </li>
                                 <li><span style="font-weight: bold">Que dois-je faire :</span> Possibilité de supprimer
@@ -376,7 +376,7 @@
                             <span style="font-weight: bold">26 Affichage de ma collection de jeux de ma collection personnelle</span>
                             <ul>
                                 <li><span style="font-weight: bold">Qui suis-je :</span> Un utilisateur connecté</li>
-                                <li><span style="font-weight: bold">Ou suis-je :</span>Dans la page profile de
+                                <li><span style="font-weight: bold">Ou suis-je :</span>Dans la page profil de
                                     l'utilisateur connecté
                                 </li>
                                 <li><span style="font-weight: bold">Que dois-je faire :</span> Afficher la liste des
@@ -434,8 +434,8 @@
                                     détails d'un jeu
                                 </li>
                                 <li><span style="font-weight: bold">Que dois-je faire :</span> Je dois pouvoir afficher,
-                                    en plus des informations propre au jeu, un cadre statistique avec des informations
-                                    supplémentaire
+                                    en plus des informations propres au jeu, un cadre statistique avec des informations
+                                    supplémentaires
                                     <ul>
                                         <li>La note moyenne de ce jeu</li>
                                         <li>La note la plus haute de ce jeu.</li>
@@ -458,8 +458,8 @@
                                     détails d'un jeu
                                 </li>
                                 <li><span style="font-weight: bold">Que dois-je faire :</span> Je dois pouvoir afficher,
-                                    en plus des informations propre au jeu, un cadre tarif avec des informations
-                                    supplémentaire
+                                    en plus des informations propres au jeu, un cadre tarif avec des informations
+                                    supplémentaires
                                     <ul>
                                         <li>Le prix moyen de ce jeu.</li>
                                         <li>Le prix le plus haut de ce jeu.</li>
@@ -523,7 +523,7 @@
                                 <li><span style="font-weight: bold">Comment je m’y prends : </span>
                                     <ul>
                                         <li><span style="font-weight: bold">pour le prix</span></li>
-                                        <li>Créer une barre avec a gauche le prix le plus bas et a droite le prix le
+                                        <li>Créer une barre avec à gauche le prix le plus bas et à droite le prix le
                                             plus haut.
                                         </li>
                                         <li>positionner une flèche <img
@@ -532,11 +532,11 @@
                                         </li>
                                         <li><span style="font-weight: bold">pour le nombre d'utilisateurs</span></li>
                                         <li>un rond gris et par dessus un autre rond vert qui représente le pourcentage
-                                            de joueur possédant ce jeu sur le nombre total de joueur du site.
+                                            de joueurs possédant ce jeu sur le nombre total de joueur du site.
                                         </li>
                                         <li>besoin d'aide : <a
-                                                href="https://nosmoking.developpez.com/demos/css/gauge_circulaire.html">gauge
-                                            circulaire</a></li>
+                                                href="https://nosmoking.developpez.com/demos/css/gauge_circulaire.html">"gauge"
+                                                circulaire</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -556,12 +556,12 @@
                                 </li>
                                 <li><span style="font-weight: bold">Comment je m’y prends : </span>
                                     <ul>
-                                        <li><span style="font-weight: bold">pour les notes</span></li>
-                                        <li>Réaliser un dégrader de couleur entre le <span style="font-weight: bold">rouge et le vert</span>
+                                        <li><span style="font-weight: bold">pour les notes : </span></li>
+                                        <li>Réaliser un dégradé de couleur entre le <span style="font-weight: bold">rouge et le vert</span>
                                             selon le poids de la note.
                                         </li>
                                         <li>0 sera un rouge foncé et 10 sera un vert clair</li>
-                                        <li><span style="font-weight: bold">pour nombre de commentaires du jeu</span>
+                                        <li><span style="font-weight: bold">pour nombre de commentaires du jeu :</span>
                                         </li>
                                         <li>Ajouter une image et modifier la taille de l'image <img
                                                 src="https://img2.freepng.fr/20180205/wke/kisspng-flame-fire-clip-art-flames-5a781390f02af4.5186766115178187689837.jpg"
@@ -577,13 +577,13 @@
                         <li>
                             <span style="font-weight: bold">43- Recherche multi-critères</span>
                             <ul>
-                                <li><span style="font-weight: bold">Qui suis-je :</span> N'importe quel visiteur du
+                                <li><span style="font-weight: bold">Qui suis-je  :</span> N'importe quel visiteur du
                                     site.
                                 </li>
-                                <li><span style="font-weight: bold">Ou suis-je :</span>Sur la page d'accueil après
+                                <li><span style="font-weight: bold">Ou suis-je  :</span>Sur la page d'accueil après
                                     connexion
                                 </li>
-                                <li><span style="font-weight: bold">Que dois-je faire :</span> Ajouter la possibilité de
+                                <li><span style="font-weight: bold">Que dois-je faire  :</span> Ajouter la possibilité de
                                     rechercher un jeu en fonction de <span style="font-weight: bold">DEUX critères minimum</span>
                                     : choisis parmi, par exemple
                                     <ul>
@@ -622,7 +622,7 @@
                                 <li><span style="font-weight: bold">Qui suis-je :</span> Un utilisateur connecté.</li>
                                 <li><span style="font-weight: bold">Ou suis-je :</span> Je suis sur la page d'accueil
                                 </li>
-                                <li><span style="font-weight: bold">Que dois-je faire :</span> Je choisi d'afficher la
+                                <li><span style="font-weight: bold">Que dois-je faire :</span> Je choisis d'afficher la
                                     liste des jeux
                                     <ul>
                                         <li>J'affiche les jeux dans un tableau de N jeux</li>
@@ -640,7 +640,7 @@
                 <div id="projet" class="tabcontent">
                     <h3>Liste des tickets du jalon PROJET (du numéro 2 au numéro 7) :</h3>
                     <ul>
-                         <li><span style="font-weight: bold">2- Logo et nom de l’application</span>
+                        <li><span style="font-weight: bold">2- Logo et nom de l’application</span>
                             <ul>
                                 <li><span style="font-weight: bold">Choisir un Nom </span>pour l'application</li>
                                 <li>Vous pouvez, si vous le jugez opportun, définir un univers ou un public
@@ -728,7 +728,6 @@
                                 <p> Au niveau de l'affichage du commentaire du joueur, une note doit être affichée.
                                     Vous pouvez choisir un design basique (une note sur 5 par exemple) ou un design plus
                                     élaboré.</p>
-                                <li>Un nombre</li>
                                 <li>Des étoiles</li>
                                 <li>quelque chose de plus original ...</li>
                             </ul>
@@ -767,16 +766,16 @@
                 Vous allez travailler en équipe de 5 à 6 sur le même projet.
                 Il est indispensable d'utiliser un outil collaboratif pour pouvoir travailler ensemble et en distanciel.
             </p>
-                <p>
-                    Le leader de votre équipe a créé une divergence (<i>fork</i>) du projet initial <code>https://gitlab.univ-artois.fr/marathon-profs/ludotheque.git</code> dans le groupe de l'équipe.
-                    Chaque membre de l'équipe (<i>les bisounours</i> par exemple) a ensuite fait un clone du projet sur sa machine personnelle.
-                </p>
-                <pre><code>git clone https://gitlab.univ-artois.fr/les-bisounours/ludotheque.git</code></pre>
-                <p>Chaque membre de l'équipe prend en charge l'une des questions proposées dans section <a href="#travail-a-realiser">Travail à réaliser</a></p>
+            <p>
+                Le leader de votre équipe a créé une divergence (<i>fork</i>) du projet initial <code>https://gitlab.univ-artois.fr/marathon-profs/ludotheque.git</code> dans le groupe de l'équipe.
+                Chaque membre de l'équipe (<i>les bisounours</i> par exemple) a ensuite fait un clone du projet sur sa machine personnelle.
+            </p>
+            <pre><code>git clone https://gitlab.univ-artois.fr/les-bisounours/ludotheque.git</code></pre>
+            <p>Chaque membre de l'équipe prend en charge l'une des questions proposées dans section <a href="#travail-a-realiser">Travail à réaliser</a></p>
 
             <div class="alert alert-warning">
                 <strong>Attention</strong> :
-                Chaque membre de l'équipe doit suivre <strong>obligatoirement</strong> les instructions <code>git</code> indiquées  dans l'exercice précédent et indiqué à nouveau dans la suite
+                Chaque membre de l'équipe doit suivre <strong>obligatoirement</strong> les instructions <code>git</code> indiquées  dans l'exercice précédent et indiquer à nouveau dans la suite
                 de façon à éviter toutes pertes de code.
             </div>
 
@@ -841,7 +840,7 @@
     </ul>
     <p>Vous devez y déposer vos travaux en français et en anglais. Pour chacun des travaux, vous préciserez
         le nom du groupe.
-        Ils devront être rendus le <span style="font-weight: bold">18 décembre 2020 avant 20h30</span> (avant la
+        Ils devront être rendus le <span style="font-weight: bold">17 décembre 2020 avant 20h00</span> (avant la
         fermeture).</p>
     <h4> <a href="https://moodle.univ-artois.fr/cours/mod/assign/view.php?id=28003">Rédaction en français :</a></h4>
     <ul>
@@ -867,7 +866,7 @@
         <li><span style="font-weight: bold">2- la rédaction d'un avis sur un jeu</span>
             <ul>
                 <li>Vous rédigerez également un avis sur un jeu.</li>
-                <li>Cet avis sera ajouté la fin de la rédaction u design.</li>
+                <li>Cet avis sera ajouté la fin de la rédaction du design.</li>
                 <li>Le document final , avec les deux parties, doit comporter :</li>
                 <li>le nom et numéro de votre équipe et les noms des différents membres</li>
                 <li>--> être déposé sur Moodle le jeudi 17 décembre avant 20h (Moodle / DUT2 / projet marathon).
@@ -892,7 +891,7 @@
         <li>Tips:
             <ul>
                 <li>Write your instructions to be read aloud</li>
-                <li>Use the second person</li>
+                <li>Use the second person or "the player" </li>
                 <li>Use short, declarative sentences</li>
                 <li>Make sure the game terms are easy to find and understand</li>
             </ul>
@@ -1012,5 +1011,6 @@
     document.getElementById("defaultOpen").click();
 
 </script>
+
 </body>
 </html>
