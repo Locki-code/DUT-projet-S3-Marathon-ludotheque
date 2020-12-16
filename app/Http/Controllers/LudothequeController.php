@@ -47,6 +47,13 @@ class LudothequeController extends Controller
             [
                 'nom' => 'required',
                 'description' => 'required',
+                'regle'  => 'required',
+                'langue'  => 'required',
+                'url_media'  => 'required',
+                'age'  => 'required',
+                'nombre_joueurs' => 'required',
+                'categorie' => 'required',
+                'duree'  => 'required',
                 'theme_id' => 'required',
                 'editeur_id' => 'required',
             ]
@@ -62,6 +69,13 @@ class LudothequeController extends Controller
         $ludotheque->user_id = $user_id;
         $ludotheque->nom = $request->nom;
         $ludotheque->description = $request->description;
+        $ludotheque->regle = $request->regle;
+        $ludotheque->langue = $request->langue;
+        $ludotheque->url_media = $request->url_media;
+        $ludotheque->age = $request->age;
+        $ludotheque->nombre_joueurs = $request->nombre_joueurs;
+        $ludotheque->categorie = $request->categorie;
+        $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
 
@@ -110,12 +124,27 @@ class LudothequeController extends Controller
             [
                 'nom' => 'required',
                 'description' => 'required',
+                'regle'  => 'required',
+                'langue'  => 'required',
+                'url_media'  => 'required',
+                'age'  => 'required',
+                'nombre_joueurs' => 'required',
+                'categorie' => 'required',
+                'duree'  => 'required',
                 'theme_id' => 'required',
                 'editeur_id' => 'required',
             ]
         );
+
         $ludotheque->nom = $request->nom;
         $ludotheque->description = $request->description;
+        $ludotheque->regle = $request->regle;
+        $ludotheque->langue = $request->langue;
+        $ludotheque->url_media = $request->url_media;
+        $ludotheque->age = $request->age;
+        $ludotheque->nombre_joueurs = $request->nombre_joueurs;
+        $ludotheque->categorie = $request->categorie;
+        $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
 
