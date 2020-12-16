@@ -12,6 +12,7 @@
 
 </head>
 <body>
+@include('navigation-dropdown')
 <!--Container-->
 <div class="mx-auto bg-grey-400">
 
