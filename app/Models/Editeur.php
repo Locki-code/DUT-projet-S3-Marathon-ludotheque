@@ -16,3 +16,6 @@ class Editeur extends Model {
         return $this->hasMany(Jeu::class);
     }
 }
+
+//boucle sur valeur
+//drop down (value = id, ) .value

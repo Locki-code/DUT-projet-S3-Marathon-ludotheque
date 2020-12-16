@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ludotheque@localhost" uuid="a2ce56fa-e7de-4b4c-87b5-b9c60b5e94ee">
-      <driver-ref>postgresql</driver-ref>
+    <data-source source="LOCAL" name="marie@localhost" uuid="39f1f430-06ac-4dbd-9f89-f27d41e2852f">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/ludotheque</jdbc-url>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/marie</jdbc-url>
     </data-source>
   </component>
 </project>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LudothequeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,5 @@ Route::get('/enonce', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resource('ludotheques', LudothequeController::class);
