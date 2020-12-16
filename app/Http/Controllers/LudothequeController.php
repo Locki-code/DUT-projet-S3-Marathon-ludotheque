@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use App\Models\Ludotheque;
 
 class LudothequeController extends Controller
 {
@@ -142,5 +141,15 @@ class LudothequeController extends Controller
     public function regle($id){
         $ludotheque = Jeu::find($id);
         return view('regle', ['ludotheque' => $ludotheque]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function random(){
+        $jeu = Jeu::all()->random(5);
+        return view('ludotheques.index', ['ludotheques' => $jeu]);
     }
 }
