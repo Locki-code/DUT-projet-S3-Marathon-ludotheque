@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Theme;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class LudothequeController extends Controller
@@ -31,7 +33,7 @@ class LudothequeController extends Controller
         $themes = Theme::All();
         $editeurs = Editeur::All();
 
-        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs,]);
+        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs]);
     }
 
     /*
@@ -72,6 +74,7 @@ class LudothequeController extends Controller
         return redirect('/ludotheques');
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -81,7 +84,13 @@ class LudothequeController extends Controller
     public function show(Request $request, $id) {
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action]);
+
+        $commentaires = DB::table('commentaires')
+            ->select()
+            ->where('jeu_id','=',$id)
+            ->get();
+
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires]);
     }
 
     /**
@@ -152,4 +161,6 @@ class LudothequeController extends Controller
         $jeu = Jeu::all()->random(5);
         return view('ludotheques.index', ['ludotheques' => $jeu]);
     }
+
+
 }

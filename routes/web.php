@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\LudothequeController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,9 @@ Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
 Route::resource('ludotheques', LudothequeController::Class);
 
 Route::get('/ludotheques/random',[LudothequeController::Class,'random']) -> name('random');
+
+Route::get('commentaires/create/{id}', [CommentaireController::Class,'create'])->name('commentaire_create');
+
+Route::post('commentaires/create', [CommentaireController::Class,'store'])->name('commentaire_store');
+
+
