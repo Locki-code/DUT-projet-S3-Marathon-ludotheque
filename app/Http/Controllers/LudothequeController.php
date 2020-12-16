@@ -31,7 +31,7 @@ class LudothequeController extends Controller
         $themes = Theme::All();
         $editeurs = Editeur::All();
 
-        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs]);
+        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs,]);
     }
 
     /*

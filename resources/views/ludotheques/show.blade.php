@@ -14,13 +14,36 @@
     {{-- la description  --}}
     <p><strong>Description : </strong>{{ $ludotheque->description}}</p>
 </div>
+
+<div>
+    {{-- la description  --}}
+    <p><strong>Photo  : </strong><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></p>
+</div>
+
+
 <div>
     {{-- le thème  --}}
     <p><strong>Thème : </strong>{{$ludotheque->theme}}</p>
 </div>
 <div>
-    {{-- l'éditeur du jeu  --}}
+    {{-- le thème  --}}
+    <p><strong>Catégorie: </strong>{{$ludotheque->categorie}}</p>
+</div>
+<div>
+    {{-- le thème  --}}
+    <p><strong>Thème : </strong>{{$ludotheque->langue}}</p>
+</div>
+<div>
+    {{-- le thème  --}}
     <p><strong>Editeur : </strong>{{$ludotheque->editeur}}</p>
+</div>
+<div>
+    {{-- le thème  --}}
+    <p><strong>Nombre de joueur : </strong>{{$ludotheque->nombre_joueur}}</p>
+</div>
+<div>
+    {{-- l'éditeur du jeu  --}}
+    <p><strong>Durée : </strong>{{$ludotheque->duree}}</p>
 </div>
 
 @if($action == 'delete')

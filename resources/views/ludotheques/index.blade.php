@@ -22,7 +22,12 @@
                     <td>{{$ludotheque->duree}}</td>
                     <td>{{$ludotheque->nombre_joueur}}</td>
 
-
+                    <td>
+                            <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
+                               class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                    </td>
                 </tr>
 
             @endforeach
