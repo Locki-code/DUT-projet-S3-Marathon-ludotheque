@@ -31,7 +31,7 @@
 </div>
 <div>
     {{-- le thème  --}}
-    <p><strong>Thème : </strong>{{$ludotheque->langue}}</p>
+    <p><strong>Langue : </strong>{{$ludotheque->langue}}</p>
 </div>
 <div>
     {{-- le thème  --}}

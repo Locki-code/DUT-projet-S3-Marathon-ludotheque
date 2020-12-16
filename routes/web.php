@@ -27,6 +27,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::resource('ludotheques', LudothequeController::Class);
+
 Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
 
 
@@ -39,3 +41,9 @@ Route::get('/ludotheques/create', [LudothequeController::class, 'create'])->name
 Route::post('/ludotheques/create', [LudothequeController::class, 'store'])->name('ludotheques.store')->middleware('auth');
 
 Route::get('/ludotheques/{sort?}', [LudothequeController::class, 'index'])->name('ludotheques.index');
+
+//Route::get('/ludotheques/random',[LudothequeController::Class,'random']) -> name('random');
+
+Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoires'])->name('dashboard');
+
+Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
