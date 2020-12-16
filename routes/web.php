@@ -29,8 +29,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('ludotheques', LudothequeController::Class);
 
-Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
-
 Route::resource('ludotheques', LudothequeController::Class);
 
 Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
