@@ -139,8 +139,9 @@ class LudothequeController extends Controller
     }
 
     public function regle($id){
-        $ludotheque = Jeu::find($id);
-        return view('regle', ['ludotheque' => $ludotheque]);
+        $jeux = Jeu::all();
+        $jeu = $jeux->find($id);
+        return view('ludotheques.regle', ['ludotheque' => $jeu]);
     }
 
     /**
