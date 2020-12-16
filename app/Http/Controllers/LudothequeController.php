@@ -137,4 +137,19 @@ class LudothequeController extends Controller
         }
         return redirect()->route('ludotheques.index');
     }
+
+    public function regle($id){
+        $ludotheque = Jeu::find($id);
+        return view('regle', ['ludotheque' => $ludotheque]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function random(){
+        $jeu = Jeu::all()->random(5);
+        return view('ludotheques.index', ['ludotheques' => $jeu]);
+    }
 }

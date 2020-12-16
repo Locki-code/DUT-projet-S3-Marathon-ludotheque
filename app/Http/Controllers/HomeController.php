@@ -11,4 +11,5 @@ class HomeController extends Controller
         $jeu = Jeu::find(1);
         return view('carte', ['jeu'=>$jeu]);
     }
+
 }
