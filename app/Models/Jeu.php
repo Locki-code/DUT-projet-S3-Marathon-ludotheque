@@ -11,7 +11,7 @@ class Jeu extends Model {
     protected $table = 'jeux';
     public $timestamps = false;
 
-    protected $fillable = ['nom', 'description', 'regles', 'langue',
+    protected $fillable = ['nom', 'description', 'regle', 'langue',
         'url_media', 'age', 'nombre_joueurs', 'categorie', 'duree'];
 
     function createur() {
