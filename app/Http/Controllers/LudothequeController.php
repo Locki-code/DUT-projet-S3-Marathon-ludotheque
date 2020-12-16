@@ -83,10 +83,7 @@ class LudothequeController extends Controller
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
 
-
-        $achat = Achat::where('jeu_id',$ludotheque->id);
-
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action, 'achat' => $achat]);
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action]);
     }
 
     /**
