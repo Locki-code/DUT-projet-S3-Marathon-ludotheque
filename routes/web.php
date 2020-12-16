@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+});
 
 
 Route::get('/enonce', function () {
@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-//Route::resource('ludotheques', LudothequeController::Class);
+Route::resource('ludotheques', LudothequeController::Class);
 
 Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
 
@@ -37,3 +37,6 @@ Route::resource('ludotheques', LudothequeController::Class);
 
 Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoires'])->name('dashboard');
 
+Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
+
+Route::get('/ludotheques/random',[LudothequeController::Class,'random']) -> name('random');
