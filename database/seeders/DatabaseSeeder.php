@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Commentaire;
+use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Mecanique;
+use App\Models\Theme;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -17,13 +19,13 @@ class DatabaseSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        User::factory()->create([
+        /*User::factory()->create([
             'name' => 'Robert Duchmol',
             'email' => 'robert.duchmol@domain.fr',
             'email_verified_at' => now(),
             'password' => '$2y$10$TKaVnYUC6y/IPQk8Gjaw7uBB.1xqNnqi/n4xo5uBH6Eok6ZrEpQdC', // secret00 je crois
             'remember_token' => Str::random(10),
-        ]);
+        ]);*/
         $this->call(
             [
                 EditeursSeederTable::class,
@@ -33,9 +35,24 @@ class DatabaseSeeder extends Seeder {
             ]
         );
         $faker = Factory::create('fr_FR');
-        $jeux = Jeu::factory(50)->create();
+        $jeux = Jeu::factory(1)->create();
         $mecanisque_ids = Mecanique::all()->pluck('id');
         $user_ids = User::all()->pluck('id');
+        $jeu = new Jeu();
+        $jeu->theme_id = Theme::where('nom','Autres')->pluck('id')->first();
+        $jeu->nom='Monopoly';
+        $jeu->description='Jeu à 4 joueurs';
+        $jeu->regles='Chacun pour soi';
+        $jeu->user_id=5;
+        $jeu->editeur_id = 5;
+        $jeu->editeur_id = 5;
+        $jeu->langue='français';
+        $jeu->url_media='http://www.monopolypedia.fr/editions/indexeditions.php';
+        $jeu->age=10;
+        $jeu->nombre_joueurs=4;
+        $jeu->duree='1 heure';
+        $jeu->categorie='Familiale';
+        $jeu->save();
         foreach ($jeux as $jeu) {
             $nbMecs = $faker->numberBetween(1, 3);
             $mecs = $faker->randomElements($mecanisque_ids, $nbMecs);
