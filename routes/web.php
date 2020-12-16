@@ -27,9 +27,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
-
-
 Route::get('/ludotheques/show/{id}', [LudothequeController::class, 'show'])->name('ludotheques.show');
 
 Route::get('/ludotheques/rules/{id}', [LudothequeController::class, 'rules'])->name('ludotheques.rules');

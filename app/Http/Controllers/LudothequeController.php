@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Models\Achat;
 
 class LudothequeController extends Controller
 {
@@ -103,9 +104,10 @@ class LudothequeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id) {
+    public function show(Request $request, $id){
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
+
         return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action]);
     }
 
