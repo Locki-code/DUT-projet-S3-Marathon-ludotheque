@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Models\Ludotheque;
 
 class LudothequeController extends Controller
 {
@@ -136,5 +137,10 @@ class LudothequeController extends Controller
             $ludotheque->delete();
         }
         return redirect()->route('ludotheques.index');
+    }
+
+    public function regle($id){
+        $ludotheque = Jeu::find($id);
+        return view('regle', ['ludotheque' => $ludotheque]);
     }
 }
