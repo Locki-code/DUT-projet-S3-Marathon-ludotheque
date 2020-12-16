@@ -38,5 +38,3 @@ Route::resource('ludotheques', LudothequeController::Class);
 Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoires'])->name('dashboard');
 
 Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
-
-Route::get('/ludotheques/random',[LudothequeController::Class,'random']) -> name('random');
