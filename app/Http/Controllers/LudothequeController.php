@@ -17,9 +17,21 @@ class LudothequeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function index() {
-        $ludotheques = Jeu::all();
-        return view('ludotheques.index', ['ludotheques' => $ludotheques]);
+    public function index($sort = null) {
+        $filter = null;
+        if($sort !== null){
+            if($sort){
+                $ludotheque = Jeu::All()->sortBy('nom');
+            } else{
+                $ludotheque = Jeu::All()->sortByDesc('nom');
+            }
+            $sort = !$sort;
+            $filter = true;
+        } else{
+            $ludotheque = Jeu::All();
+            $sort = true;
+        }
+        return view('ludotheques.index', ['ludotheques' => $ludotheque, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
@@ -33,7 +45,6 @@ class LudothequeController extends Controller
 
         return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs,]);
     }
-
     /*
      * Store a newly created resource in storage.
      *

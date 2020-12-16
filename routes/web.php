@@ -27,8 +27,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('ludotheques', LudothequeController::Class);
-
 Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
 
-Route::resource('ludotheques', LudothequeController::Class);
+
+Route::get('/ludotheques/show/{id}', [LudothequeController::class, 'show'])->name('ludotheques.show');
+
+Route::get('/ludotheques/rules/{id}', [LudothequeController::class, 'rules'])->name('ludotheques.rules');
+
+Route::get('/ludotheques/create', [LudothequeController::class, 'create'])->name('ludotheques.create');
+
+Route::post('/ludotheques/create', [LudothequeController::class, 'store'])->name('ludotheques.store')->middleware('auth');
+
+Route::get('/ludotheques/{sort?}', [LudothequeController::class, 'index'])->name('ludotheques.index');
