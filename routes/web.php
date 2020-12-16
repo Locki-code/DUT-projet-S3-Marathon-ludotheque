@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LudothequeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
+
+Route::resource('ludotheques', LudothequeController::Class);
