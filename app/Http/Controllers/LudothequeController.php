@@ -30,7 +30,6 @@ class LudothequeController extends Controller
     public function create() {
         $themes = Theme::All();
         $editeurs = Editeur::All();
-        //$user = Auth::user()->id;
 
         return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs]);
     }

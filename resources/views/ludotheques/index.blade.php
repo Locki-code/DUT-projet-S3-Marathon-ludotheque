@@ -1,3 +1,4 @@
+@extends('base.master')
 @section('content')
     <div class="container mx-auto px-4">
         <div class="flex justify-end">
@@ -8,33 +9,22 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Description</th>
-                <th>Thème</th>
-                <th>Editeur</th>
+                <th>Photo</th>
+                <th>Durée</th>
+                <th>Nombre de joueurs</th>
             </tr>
             </thead>
             <tbody>
             @foreach($ludotheques as $ludotheque)
                 <tr>
                     <td>{{$ludotheque->nom}}</td>
-                    <td>{{$ludotheque->description}}</td>
-                    <td>{{$ludotheque->theme}}</td>
-                    <td>{{$ludotheque->editeur}}</td>
+                    <td><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></td>
+                    <td>{{$ludotheque->duree}}</td>
+                    <td>{{$ludotheque->nombre_joueur}}</td>
 
-                    <td>
-                        @can('delete',$ludotheque)
-                            <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
-                               class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        @else
-                            <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
-                               class="bg-red-400 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        @endcan
-                    </td>
+
                 </tr>
+
             @endforeach
             </tbody>
         </table>
