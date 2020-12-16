@@ -23,7 +23,7 @@
 
 <div>
     {{-- le thème  --}}
-    <p><strong>Thème : </strong>{{$ludotheque->theme}}</p>
+    <p><strong>Thème : </strong>{{$ludotheque->theme->nom}}</p>
 </div>
 <div>
     {{-- le thème  --}}
@@ -35,7 +35,7 @@
 </div>
 <div>
     {{-- le thème  --}}
-    <p><strong>Editeur : </strong>{{$ludotheque->editeur}}</p>
+    <p><strong>Editeur : </strong>{{$ludotheque->editeur->nom}}</p>
 </div>
 <div>
     {{-- le thème  --}}
