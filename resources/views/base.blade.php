@@ -3,12 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="iut Lens">
+    <link rel="stylesheet" href="{{asset('css/homepage.css')}}">
+    <link rel="icon" href="./img/logo/icon.jpg"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
     <title>@yield('title', 'Base')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
+    <script>
+        function myFunction() {
+            var checkBox = document.getElementById("menu");
+            var div = document.getElementById("nav-extented");
+            if (checkBox.checked == true){
+                div.style.display = "block";
+            } else {
+                div.style.display = "none";
+            }
+        }
+    </script>
     <!-- Bootstrap core CSS -->
 {{--
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"

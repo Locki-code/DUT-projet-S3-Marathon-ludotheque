@@ -1,28 +1,4 @@
 @extends('base')
-<!DOCTYPE html>
-<html lang="fr" >
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TROUVER UN NOM</title>
-    <link rel="icon" href="./img/logo/icon.jpg"/>
-    <link rel="stylesheet" href="{{'css/homepage.css'}}">
-    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-</head>
-<body>
-<script>
-    function myFunction() {
-        var checkBox = document.getElementById("menu");
-        var div = document.getElementById("nav-extented");
-        if (checkBox.checked == true){
-            div.style.display = "block";
-        } else {
-            div.style.display = "none";
-        }
-    }
-</script>
-</body>
-</html>
 @section('content')
     @if ($errors->any())
         <div>
