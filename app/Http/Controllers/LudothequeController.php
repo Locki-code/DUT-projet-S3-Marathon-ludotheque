@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
+use App\Models\Mecanique;
 use App\Models\Theme;
 use App\Models\Editeur;
 use App\Models\Jeu;
@@ -20,7 +21,23 @@ class LudothequeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($sort = null) {
+
+    public function index($sort = null, Request $request) {
+        $jeuByEditeur=null;
+        if($request -> has('editeur_id'))
+            $jeuByEditeur=$request->editeur_id;
+        $editeurs=Editeur::all();
+
+        $jeuByTheme=null;
+        if($request -> has('theme_id'))
+            $jeuByTheme=$request->theme_id;
+        $themes=Theme::all();
+
+        $jeuByMecanique=null;
+        if($request -> has('mecanique_id'))
+            $jeuByMecanique=$request->mecanique_id;
+        $mecaniques=Mecanique::all();
+
         $filter = null;
         if($sort !== null){
             if($sort){
@@ -31,11 +48,33 @@ class LudothequeController extends Controller
             $sort = !$sort;
             $filter = true;
         } else{
-            $ludotheque = Jeu::All();
+
+            if($jeuByEditeur==null) {
+                $ludotheque = Jeu::All();
+            }
+            else {
+                $ludotheque = Editeur::find($jeuByEditeur)->jeux;
+            }
+
+            if($jeuByTheme==null) {
+                $ludotheque = Jeu::All();
+            }
+            else {
+                $ludotheque = Theme::find($jeuByTheme)->jeux;
+            }
+
+            if($jeuByMecanique==null) {
+                $ludotheque = Jeu::All();
+            }
+            else {
+                $ludotheque = Mecanique::find($jeuByMecanique)->jeux;
+            }
             $sort = true;
         }
-        return view('ludotheques.index', ['ludotheques' => $ludotheque, 'sort' => intval($sort), 'filter' => $filter]);
+
+        return view('ludotheques.index', ['ludotheques' => $ludotheque, 'sort' => intval($sort), 'filter' => $filter, 'editeurs' => $editeurs, 'themes' => $themes, 'mecaniques' => $mecaniques]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,9 +85,8 @@ class LudothequeController extends Controller
         $themes = Theme::All();
         $editeurs = Editeur::All();
 
-        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs]);
+        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs,]);
     }
-
     /*
      * Store a newly created resource in storage.
      *
@@ -93,11 +131,14 @@ class LudothequeController extends Controller
         $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
+        $editeurs=Editeur::all();
+        $themes=Theme::all();
 
         // insertion de l'enregistrement dans la base de données
         $ludotheque->save();
 
         // redirection vers la page qui affiche la liste des tâches
+        //return view('ludotheques.store',['editeurs' => $editeurs],['themes' => $themes]);
         return redirect('/ludotheques');
     }
 
@@ -196,3 +237,5 @@ class LudothequeController extends Controller
         return view('ludotheques.regle', ['ludotheque' => $jeu]);
     }
 }
+
+

@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\AchatController;
-use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\LudothequeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +27,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+
+Route::get('/carte',[\App\Http\Controllers\HomeController::class,'carte']);
+
+
 Route::get('/ludotheques/show/{id}', [LudothequeController::class, 'show'])->name('ludotheques.show');
 
-Route::get('/ludotheques/rules/{id}', [LudothequeController::class, 'rules'])->name('ludotheques.rules');
+Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle'])->name('ludotheques.regle');
 
 Route::get('/ludotheques/create', [LudothequeController::class, 'create'])->name('ludotheques.create');
 
