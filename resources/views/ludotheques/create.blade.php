@@ -1,4 +1,5 @@
-
+@extends('base')
+@section('content')
 {{--
    messages d'erreurs dans la saisie du formulaire.
 --}}
@@ -174,4 +175,4 @@
         <button class="btn btn-success" type="submit">Valider</button>
     </div>
 </form>
-
+@endsection

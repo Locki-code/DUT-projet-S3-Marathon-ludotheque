@@ -1,4 +1,5 @@
-
+@extends('base')
+@section('content')
 
 @if ($errors->any())
     <div>
@@ -48,4 +49,5 @@
         <button class="btn btn-success" type="submit">Valider</button>
     </div>
 </form>
+@endsection
 

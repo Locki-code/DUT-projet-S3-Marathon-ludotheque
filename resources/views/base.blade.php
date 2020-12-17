@@ -115,9 +115,7 @@
             <div class="line">
                 <ul>
                     <li><h4>MON COMPTE</h4></li>
-                    <li><a href="{{'/profil'}}">Profil</a></li>
-                    <li><a href="#">Se connecter</a></li>
-                    <li><a href="#">S'enreigstrer</a></li>
+                    <li><a href="{{'user/profil'}}">Profil</a></li>
                 </ul>
                 <ul>
                     <li><h4>DASHBOARD</h4></li>
@@ -132,12 +130,6 @@
                     <li><a href="{{'user/achat'}}">Ajouter d'un jeu collection personnelle</a></li>
                     <li><a href="{{'ludotheques'}}">Choix de listing </a></li>
                     <li><a href="{{'ludotheques'}}?#liste_jeu">Liste des jeux</a></li>
-                </ul>
-                <ul>
-                    <li><h4>COMMENTAIRE</h4></li>
-                    <li><a href="#"> lorem</a></li>
-                    <li><a href="#"> lorem</a></li>
-                    <li><a href="#">lorem</a></li>
                 </ul>
             </div>
         </div>
