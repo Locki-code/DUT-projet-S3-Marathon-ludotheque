@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Models\Achat;
 
 class LudothequeController extends Controller
 {
@@ -17,9 +18,21 @@ class LudothequeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function index() {
-        $ludotheques = Jeu::all();
-        return view('ludotheques.index', ['ludotheques' => $ludotheques]);
+    public function index($sort = null) {
+        $filter = null;
+        if($sort !== null){
+            if($sort){
+                $ludotheque = Jeu::All()->sortBy('nom');
+            } else{
+                $ludotheque = Jeu::All()->sortByDesc('nom');
+            }
+            $sort = !$sort;
+            $filter = true;
+        } else{
+            $ludotheque = Jeu::All();
+            $sort = true;
+        }
+        return view('ludotheques.index', ['ludotheques' => $ludotheque, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
@@ -33,7 +46,6 @@ class LudothequeController extends Controller
 
         return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs,]);
     }
-
     /*
      * Store a newly created resource in storage.
      *
@@ -47,6 +59,13 @@ class LudothequeController extends Controller
             [
                 'nom' => 'required',
                 'description' => 'required',
+                'regle'  => 'required',
+                'langue'  => 'required',
+                'url_media'  => 'required',
+                'age'  => 'required',
+                'nombre_joueurs' => 'required',
+                'categorie' => 'required',
+                'duree'  => 'required',
                 'theme_id' => 'required',
                 'editeur_id' => 'required',
             ]
@@ -62,6 +81,13 @@ class LudothequeController extends Controller
         $ludotheque->user_id = $user_id;
         $ludotheque->nom = $request->nom;
         $ludotheque->description = $request->description;
+        $ludotheque->regle = $request->regle;
+        $ludotheque->langue = $request->langue;
+        $ludotheque->url_media = $request->url_media;
+        $ludotheque->age = $request->age;
+        $ludotheque->nombre_joueurs = $request->nombre_joueurs;
+        $ludotheque->categorie = $request->categorie;
+        $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
 
@@ -78,9 +104,10 @@ class LudothequeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id) {
+    public function show(Request $request, $id){
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
+
         return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action]);
     }
 
@@ -110,12 +137,27 @@ class LudothequeController extends Controller
             [
                 'nom' => 'required',
                 'description' => 'required',
+                'regle'  => 'required',
+                'langue'  => 'required',
+                'url_media'  => 'required',
+                'age'  => 'required',
+                'nombre_joueurs' => 'required',
+                'categorie' => 'required',
+                'duree'  => 'required',
                 'theme_id' => 'required',
                 'editeur_id' => 'required',
             ]
         );
+
         $ludotheque->nom = $request->nom;
         $ludotheque->description = $request->description;
+        $ludotheque->regle = $request->regle;
+        $ludotheque->langue = $request->langue;
+        $ludotheque->url_media = $request->url_media;
+        $ludotheque->age = $request->age;
+        $ludotheque->nombre_joueurs = $request->nombre_joueurs;
+        $ludotheque->categorie = $request->categorie;
+        $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
 
@@ -139,17 +181,8 @@ class LudothequeController extends Controller
     }
 
     public function regle($id){
-        $ludotheque = Jeu::find($id);
-        return view('regle', ['ludotheque' => $ludotheque]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function random(){
-        $jeu = Jeu::all()->random(5);
-        return view('ludotheques.index', ['ludotheques' => $jeu]);
+        $jeux = Jeu::all();
+        $jeu = $jeux->find($id);
+        return view('ludotheques.regle', ['ludotheque' => $jeu]);
     }
 }
