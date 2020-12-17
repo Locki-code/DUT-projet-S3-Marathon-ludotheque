@@ -10,7 +10,7 @@
     <link rel="icon" href="./img/logo/icon.jpg"/>
     <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-    <title>@yield('title', 'Base')</title>
+    <title>@yield('title', 'Jeux')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
@@ -53,11 +53,12 @@
                 @guest
             <a class="header-connexion" href="{{ URL::route('login') }}">Se connecter</a>
                 @endguest
-                {{--
+
             @guest
-                <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
+                <li class="couleur-nom"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
             @endguest
             @auth
+                    <li class="couleur-nom"><!-- Authentication --><span style="color: black" class="text-white">{{ Auth::user()->name }}</span>
                     <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
                 @endguest
                 @auth
@@ -74,7 +75,7 @@
                     </form>
                 </li>
             @endauth
-            --}}
+
             </ul>
         </div>
         <input id="menu" type="checkbox" onclick="myFunction()">
@@ -123,9 +124,9 @@
                     <li><a href="#">lorem</a></li>
                 </ul>
                 <ul>
-                    <li><h4>NAVIGATION</h4></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Catégorie</a></li>
+                    <li><h4>DASHBOARD</h4></li>
+                    <li><a href="#">Cinq jeux aléatoires</a></li>
+                    <li><a href="#">Cinq meillerus jeux</a></li>
                     <li><a href="#">Jeux</a></li>
                 </ul>
             </div>

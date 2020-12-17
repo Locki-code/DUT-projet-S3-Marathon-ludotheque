@@ -71,5 +71,16 @@ Route::prefix('user')->middleware('auth')->group(function () {
 Route::delete('/achat/{id}', [UserController::class, 'supprimeAchat'])->name('user.supprimeAchat');
 
 
+
 Route::get('commentaire/supprime/{id}',[CommentaireController::class, 'afficheCommentaire'])->name('commentaire_affiche');
 Route::delete('/commentaire/{id}',[CommentaireController::class,'supprimeCommentaire'])->name('supprimeCommentaire');
+
+Route::prefix('user')->middleware('auth')->group(function () {
+    Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');
+    Route::get('/achat', [UserController::class, 'create_achat'])->name('user.achat');
+    Route::post('/achat', [UserController::class, 'achatStore'])->name('user.achatStore');
+    Route::get('/achat/supprime/{id}', [UserController::class, 'affiche_achat'])->name('user.affiche_achat');
+});
+
+Route::delete('/achat/{id}', [UserController::class, 'supprimeAchat'])->name('user.supprimeAchat');
+
