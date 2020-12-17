@@ -64,7 +64,7 @@
 </div>
 <div>
     {{-- nombre d'utilisateurs sur le site  --}}
-    <p><strong>Nombre total d'utilisateurs sur le site : </strong>{{$prixMin = DB::table('users')->select('id')->count('id')}}</p>
+    <p><strong>Nombre total d'utilisateurs sur le site : </strong>{{$nbUtil = DB::table('users')->select('id')->count('id')}}</p>
 </div>
 
 
