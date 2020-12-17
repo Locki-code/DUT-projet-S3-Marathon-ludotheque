@@ -13,19 +13,7 @@ class HomeController extends Controller
         $jeu = Jeu::find(1);
         return view('carte', ['jeu'=>$jeu]);
     }
-
-    /*function best($nb){
-        $avg=[];
-        foreach(Commentaire::all() as $jeu){
-            $jeuNote=new JeuxInformation();
-            $jeuNote = $jeu->calculate();
-            $avg[]=['avg'=>$jeuNote->getAverage(),'id'=>$jeu->jeu_id];
-        }
-        krsort($avg,'avg');
-        $res = array_slice($avg,0,$nb);
-        return $res;
-    }*/
-
+    
     function cinqAleatoiresEtMeilleurs() {
         $ludotheque_ids = Jeu::all()->pluck('id');
         $faker = \Faker\Factory::create();
