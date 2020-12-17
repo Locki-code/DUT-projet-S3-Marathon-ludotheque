@@ -13,7 +13,7 @@ class HomeController extends Controller
         $jeu = Jeu::find(1);
         return view('carte', ['jeu'=>$jeu]);
     }
-
+    
     function cinqAleatoiresEtMeilleurs() {
         $ludotheque_ids = Jeu::all()->pluck('id');
         $faker = \Faker\Factory::create();
@@ -41,6 +41,8 @@ class HomeController extends Controller
                 $y++;
             }
         }
+        //dd($best);
+        //die();
         return view('aleatoire', ['ludotheques' => $ludotheques,'cinqMeilleurs'=>$best]);
     }
 

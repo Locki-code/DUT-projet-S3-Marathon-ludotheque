@@ -10,7 +10,7 @@
                     <x-carte :jeu="$ludotheque"></x-carte>
                 @endforeach
             </div>
-            <h2 class="text-4xl font-medium capitalize">Les cinq meilleurs jeux</h2>
+            <h2 class="text-4xl font-medium capitalize">Les cinq meilleures jeux</h2>
             <div class=" border dark:border-gray-700 transition duration-500 ease-in-out"></div>
             <div class="flex flex-col mt-2">
                 @foreach($cinqMeilleurs as $jeu)
