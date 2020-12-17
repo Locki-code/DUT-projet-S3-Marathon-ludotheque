@@ -87,6 +87,7 @@
     <p><strong>Le nombre de commentaires total pour tous les jeux : </strong>{{App\Models\Commentaire::all()->count('*')}}</p>
 </div>
 
+
 @if($action == 'delete')
     <form action="{{route('ludotheques.destroy',$ludotheque->id)}}" method="POST">
         @csrf
