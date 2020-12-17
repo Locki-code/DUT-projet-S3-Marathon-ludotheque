@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Achat;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class LudothequeController extends Controller
 {
@@ -149,17 +151,16 @@ class LudothequeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show(Request $request, $id) {
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
-
         $commentaires = DB::table('commentaires')
             ->select()
             ->where('jeu_id','=',$id)
             ->orderBy('date_com', 'desc')
             ->get();
-
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires]);
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires);
     }
 
     /**

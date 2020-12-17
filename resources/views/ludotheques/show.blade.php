@@ -66,8 +66,26 @@
     {{-- nombre d'utilisateurs sur le site  --}}
     <p><strong>Nombre total d'utilisateurs sur le site : </strong>{{$nbUtil = DB::table('users')->select('id')->count('id')}}</p>
 </div>
-
-
+<div>
+    {{--La note moyenne de ce jeu--}}
+    <p><strong>La note moyenne de ce jeu : </strong>{{App\Models\Commentaire::where('jeu_id',$ludotheque->id)->avg('note')}}</p>
+</div>
+<div>
+    {{--La note la plus haute de ce jeu--}}
+    <p><strong>La note la plus haute de ce jeu : </strong>{{App\Models\Commentaire::where('jeu_id',$ludotheque->id)->max('note')}}</p>
+</div>
+<div>
+    {{--La note la plus basse de ce jeu--}}
+    <p><strong>La note la plus basse de ce jeu : </strong>{{App\Models\Commentaire::where('jeu_id',$ludotheque->id)->min('note')}}</p>
+</div>
+<div>
+    {{--Le nombre de commentaires sur ce jeu--}}
+    <p><strong>Le nombre de commentaires sur ce jeu : </strong>{{App\Models\Commentaire::where('jeu_id',$ludotheque->id)->count('note')}}</p>
+</div>
+<div>
+    {{--Le nombre de commentaires total pour tous les jeux--}}
+    <p><strong>Le nombre de commentaires total pour tous les jeux : </strong>{{App\Models\Commentaire::all()->count('*')}}</p>
+</div>
 
 @if($action == 'delete')
     <form action="{{route('ludotheques.destroy',$ludotheque->id)}}" method="POST">
@@ -79,9 +97,9 @@
         </div>
     </form>
 @endif
-    <div>
-        <a href="{{route('ludotheques.index')}}">Retour à la liste de jeux</a>
-    </div>
+<div>
+    <a href="{{route('ludotheques.index')}}">Retour à la liste de jeux</a>
+</div>
 <table class="table-auto">
     <thead>
     <tr>
@@ -104,8 +122,4 @@
     <div>
         <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}">Ajouter un commentaire</a>
     </div>
-
-
-
-
 
