@@ -58,4 +58,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    function ajout(){
+        return $this -> belongsToMany(Jeu::class, 'achats')
+            ->as('achat')
+            ->withPivot('prix', 'lieu', 'date_achat');
+    }
 }
