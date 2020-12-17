@@ -114,18 +114,21 @@
         <th>Posté le :</th>
     </tr>
     </thead>
-    <tbody>
     @foreach($commentaires as $com)
         <tr>
             <td>{{$com->note}}</td>
             <td>{{$com->commentaire}}</td>
             <td>{{$com->date_com}}</td>
+            <td>{{$com->date_com}}</td>
+
+
             <td>
-                <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}"
-                   class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+                <a href="{{route('commentaire_affiche',$com->id)}}"
+                   class="bg-red-400 cursor-pointer rounded p-1 mx-1 text-white">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
+
 
         </tr>
 
