@@ -12,17 +12,22 @@
             <tr>
                 <th>Nom</th>
                 <th>Photo</th>
-                <th>Durée</th>
-                <th>Nombre de joueurs</th>
+                {{--<th>Durée</th>
+                <th>Nombre de joueurs</th>--}}
             </tr>
             </thead>
             <tbody>
             @foreach($ludotheques as $ludotheque)
                 <tr>
                     <td>{{$ludotheque->nom}}</td>
+                    {{--<td>{{$ludotheque->description}}</td>
+                    <td>{{$ludotheque->regle}}</td>
+                    <td>{{$ludotheque->langue}}</td>--}}
                     <td><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></td>
-                    <td>{{$ludotheque->duree}}</td>
-                    <td>{{$ludotheque->nombre_joueur}}</td>
+                    {{--<td>{{$ludotheque->age}}</td>
+                    <td>{{$ludotheque->nombre_joueurs}}</td>
+                    <td>{{$ludotheque->categorie}}</td>
+                    <td>{{$ludotheque->duree}}</td>--}}
 
                     <td>
                             <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"

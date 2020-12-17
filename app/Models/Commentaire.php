@@ -13,6 +13,7 @@ class Commentaire extends Model
 
     protected $fillable = ['commentaire', 'date_com', 'note'];
 
+
     function jeu() {
         return $this->belongsTo(Jeu::class);
     }

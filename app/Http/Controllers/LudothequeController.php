@@ -9,7 +9,9 @@ use App\Models\Jeu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\Achat;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -46,8 +48,9 @@ class LudothequeController extends Controller
         $themes = Theme::All();
         $editeurs = Editeur::All();
 
-        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs,]);
+        return view('ludotheques.create', ['themes'=> $themes, 'editeurs' => $editeurs]);
     }
+
     /*
      * Store a newly created resource in storage.
      *
@@ -61,6 +64,13 @@ class LudothequeController extends Controller
             [
                 'nom' => 'required',
                 'description' => 'required',
+                'regle'  => 'required',
+                'langue'  => 'required',
+                'url_media'  => 'required',
+                'age'  => 'required',
+                'nombre_joueurs' => 'required',
+                'categorie' => 'required',
+                'duree'  => 'required',
                 'theme_id' => 'required',
                 'editeur_id' => 'required',
             ]
@@ -76,6 +86,13 @@ class LudothequeController extends Controller
         $ludotheque->user_id = $user_id;
         $ludotheque->nom = $request->nom;
         $ludotheque->description = $request->description;
+        $ludotheque->regle = $request->regle;
+        $ludotheque->langue = $request->langue;
+        $ludotheque->url_media = $request->url_media;
+        $ludotheque->age = $request->age;
+        $ludotheque->nombre_joueurs = $request->nombre_joueurs;
+        $ludotheque->categorie = $request->categorie;
+        $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
 
@@ -85,6 +102,7 @@ class LudothequeController extends Controller
         // redirection vers la page qui affiche la liste des tâches
         return redirect('/ludotheques');
     }
+
 
     /**
      * Display the specified resource.
@@ -107,8 +125,14 @@ App\Models\Commentaire::where(function($query){
     public function show(Request $request, $id) {
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
+
+        $commentaires = DB::table('commentaires')
+            ->select()
+            ->where('jeu_id','=',$id)
+            ->get();
         $classement = Commentaire::select('avg(note)','jeu_id')->groupBy('jeu_id');
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'classement' => $classement]);
+
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires]);
     }
 
     /**
@@ -137,12 +161,27 @@ App\Models\Commentaire::where(function($query){
             [
                 'nom' => 'required',
                 'description' => 'required',
+                'regle'  => 'required',
+                'langue'  => 'required',
+                'url_media'  => 'required',
+                'age'  => 'required',
+                'nombre_joueurs' => 'required',
+                'categorie' => 'required',
+                'duree'  => 'required',
                 'theme_id' => 'required',
                 'editeur_id' => 'required',
             ]
         );
+
         $ludotheque->nom = $request->nom;
         $ludotheque->description = $request->description;
+        $ludotheque->regle = $request->regle;
+        $ludotheque->langue = $request->langue;
+        $ludotheque->url_media = $request->url_media;
+        $ludotheque->age = $request->age;
+        $ludotheque->nombre_joueurs = $request->nombre_joueurs;
+        $ludotheque->categorie = $request->categorie;
+        $ludotheque->duree = $request->duree;
         $ludotheque->theme_id = $request->theme_id;
         $ludotheque->editeur_id = $request->editeur_id;
 
