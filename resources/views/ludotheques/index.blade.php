@@ -90,7 +90,7 @@
                     {{--<td>{{$ludotheque->description}}</td>
                     <td>{{$ludotheque->regle}}</td>
                     <td>{{$ludotheque->langue}}</td>--}}
-                    <div class="container-img-jeu"><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></div>
+                    <div class="container-img-jeu"><img src="{{$ludotheque->url_media}}" class="card-img-top" alt="avatar"></div>
                     {{--<td>{{$ludotheque->age}}</td>
                     <td>{{$ludotheque->nombre_joueurs}}</td>
                     <td>{{$ludotheque->categorie}}</td>
