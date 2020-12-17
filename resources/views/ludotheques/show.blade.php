@@ -145,6 +145,6 @@
     <div>
         <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}">Ajouter un commentaire <i class="fas fa-comments"></i></a>
     </div>
-    </div>
+</table>
 @endsection
 
