@@ -74,6 +74,7 @@ class JeuxInformation{
     /**
      * @return mixed
      */
+
     public function getJeu()
     {
         return $this->jeu;
