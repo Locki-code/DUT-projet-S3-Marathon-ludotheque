@@ -21,6 +21,12 @@
     {{-- la photo  --}}
     <p><strong>Photo  : </strong><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></p>
 </div>
+<div>
+    {{--Le classement de ce jeu dans l'ensemble des jeux ayant le même thème.--}}
+    <p><strong>Position du jeu dans le théme : </strong>{{ $jeuxInformation->getRankInTheme() }}
+        sur {{ $jeuxInformation->getNbRankInTheme() }}</p>
+</div>
+
 
 
 <div>

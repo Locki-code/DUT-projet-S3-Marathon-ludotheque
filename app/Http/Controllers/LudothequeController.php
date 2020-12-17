@@ -8,6 +8,7 @@ use App\Models\Theme;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\User;
+use App\Services\JeuxInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -160,7 +161,12 @@ class LudothequeController extends Controller
             ->where('jeu_id','=',$id)
             ->orderBy('date_com', 'desc')
             ->get();
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires]);
+
+        $jeuxInformation = new JeuxInformation;
+        $jeuxInformation->setJeu($ludotheque);
+        $jeuxInformation->calculate();
+
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires,'jeuxInformation' => $jeuxInformation]);
     }
 
     /**
