@@ -47,7 +47,6 @@
         <nav>
             <a class="nav-item" href="{{ URL::route('dashboard') }}">dashboard</a>
             <a class="nav-item" href="{{ URL::route('ludotheques.index') }}">jeux</a>
-            <a class="nav-item" href="#">catégorie</a>
         </nav>
         <div class="header-right">
             <ul>
