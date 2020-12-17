@@ -152,7 +152,9 @@ h1,h2,h3,h4 {
     background: #c48a5c;
 }
 
-
+.couleur-nom{
+    color: black;
+}
 
 /* formulaire page accueil */
 
