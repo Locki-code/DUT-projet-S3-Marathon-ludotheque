@@ -58,14 +58,10 @@
                 <li class="couleur-nom"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
             @endguest
             @auth
-                    <li class="couleur-nom"><!-- Authentication --><span style="color: black" class="text-white">{{ Auth::user()->name }}</span>
-                    <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
+                    <li class="couleur-nom"><!-- Authentication --><span>{{ Auth::user()->name }}</span>
                 @endguest
                 @auth
-                        <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{route('user.profil') }}">Profil</a></li>
-                    <li class="my-2 my-lg-0"><!-- Authentication --><span class="text-white">{{ Auth::user()->name }}</span>
-                        <form  method="POST" action="{{ route('logout') }}">
-                            @csrf
+                        @csrf
 
                         <x-jet-dropdown-link href="{{ route('logout') }}"
                                              onclick="event.preventDefault();
@@ -119,35 +115,35 @@
             <div class="line">
                 <ul>
                     <li><h4>MON COMPTE</h4></li>
+                    <li><a href="{{'/profil'}}">Profil</a></li>
                     <li><a href="#">Se connecter</a></li>
-                    <li><a href="#">S'enregistrer</a></li>
-                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">S'enreigstrer</a></li>
                 </ul>
                 <ul>
                     <li><h4>DASHBOARD</h4></li>
-                    <li><a href="#">Cinq jeux aléatoires</a></li>
-                    <li><a href="#">Cinq meillerus jeux</a></li>
-                    <li><a href="#">Jeux</a></li>
+                    <li><a href="{{'/dashboard'}}">Cinq jeux aléatoires</a></li>
+                    <li><a href="{{'/dashboard'}}?#meilleur">Cinq meilleurs jeux</a></li>
                 </ul>
             </div>
             <div class="line">
                 <ul>
-                    <li><h4>CONTACT</h4></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
+                    <li><h4>JEU</h4></li>
+                    <li><a href="{{'ludotheques/create'}}">Ajouter un jeu dans la base</a></li>
+                    <li><a href="{{'user/achat'}}">Ajouter d'un jeu collection personnelle</a></li>
+                    <li><a href="{{'ludotheques'}}">Choix de listing </a></li>
+                    <li><a href="{{'ludotheques'}}?#liste_jeu">Liste des jeux</a></li>
                 </ul>
                 <ul>
-                    <li><h4>SECTION</h4></li>
-                    <li><a href="#">lorem</a></li>
-                    <li><a href="#">lorem</a></li>
+                    <li><h4>COMMENTAIRE</h4></li>
+                    <li><a href="#"> lorem</a></li>
+                    <li><a href="#"> lorem</a></li>
                     <li><a href="#">lorem</a></li>
                 </ul>
             </div>
         </div>
         <div class="social-media">
-            <a href="#"><img src="img/trello.png"></a>
-            <a href="#"><img src="img/gitlab.png"></a>
+            <a href="#"><img src="{{asset('img/trello.png')}}"></a>
+            <a href="#"><img src="{{asset('img/gitlab.png')}}"></a>
         </div>
 
         <span id="divider"></span>

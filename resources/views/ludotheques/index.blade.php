@@ -78,7 +78,7 @@
 
         <div class="text-center" style="margin-top: 2rem">
             <div class="container-tri">
-            <h3> Liste des jeux </h3>
+            <h3 id="liste_jeu"> Liste des jeux </h3>
                 <a href="{{ URL::route('ludotheques.index', $sort)}}"><div style="float: right; margin-top: -25px;">Trié par nom</div> @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             </div>
             <hr class="mt-2 mb-2">

@@ -1,3 +1,4 @@
+
 <div class="text-center" style="margin-top: 2rem">
     <h3>Voulez vous supprimer le jeu ? </h3>
     <hr class="mt-2 mb-2">

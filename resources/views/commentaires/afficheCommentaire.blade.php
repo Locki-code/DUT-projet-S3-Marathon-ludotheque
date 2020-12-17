@@ -1,6 +1,5 @@
-
-
-
+@extends('base')
+@section('content')
     <h2 class="mb-4">Suppression du commentaire</h2>
     <p>Voulez-vous supprimer ce commentaire :</p>
     <p>{{$commentaire->commentaire}}</p>
@@ -16,6 +15,6 @@
             </button>
         </form>
     </div>
-
+@endsection
 
 

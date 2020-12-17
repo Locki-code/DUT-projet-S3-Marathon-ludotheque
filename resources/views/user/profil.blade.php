@@ -1,5 +1,9 @@
+@extends('base')
+    {{--
+        from https://www.codeply.com/go/5Lu0E8graQ/bootstrap-4-user-profile-template
+    --}}
 
-
+@section('content')
     <div class="container">
         <div class="row my-2">
             <div class="col-lg-8 order-lg-2">
@@ -15,7 +19,7 @@
                     </li>
                 </ul>
                 <div class="tab-content py-4">
-                    <div class="tab-pane active" id="profil>
+                    <div class="tab-pane active" id="profil">
                         <h5 class="mb-3">Profil Utilisateur</h5>
                         <div class="row">
                             <div class="col-md-6">
