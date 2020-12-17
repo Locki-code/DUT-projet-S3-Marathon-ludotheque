@@ -20,7 +20,7 @@
 
 <div>
     {{-- la photo  --}}
-    <p><strong>Photo  : </strong><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></p>
+    <p><strong>Photo  : </strong><img src="{{ $ludotheque->url_media}}" class="card-img-top" alt="avatar"></p>
 </div>
 <div>
     {{--Le classement de ce jeu dans l'ensemble des jeux ayant le même thème.--}}
