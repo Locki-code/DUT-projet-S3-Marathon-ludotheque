@@ -1,9 +1,10 @@
-@extends('base.master')
+@extends('base')
 @section('content')
 <div class="text-center" style="margin-top: 2rem">
     @if($action == 'delete')
         <h3>Suppression d'un jeu</h3>
     @else
+
         <h3>Affichage d'un jeu</h3>
     @endif
     <hr class="mt-2 mb-2">
