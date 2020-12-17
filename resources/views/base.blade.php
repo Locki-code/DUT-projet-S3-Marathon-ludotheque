@@ -47,6 +47,7 @@
                     <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
                 @endguest
                 @auth
+                        <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{route('user.profil') }}">Profil</a></li>
                     <li class="my-2 my-lg-0"><!-- Authentication --><span class="text-white">{{ Auth::user()->name }}</span>
                         <form  method="POST" action="{{ route('logout') }}">
                             @csrf

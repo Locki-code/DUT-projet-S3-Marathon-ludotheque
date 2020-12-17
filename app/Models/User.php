@@ -63,9 +63,20 @@ class User extends Authenticatable
         return $this->hasMany(Commentaire::class);
     }
 
+    function creation() {
+        return $this->hasMany(Jeu::class);
+    }
+
     function user(){
         return $this -> belongsToMany(Jeu::class, 'achats')
             ->as('achat')
             ->withPivot('prix', 'lieu', 'date_achat');
     }
+
+    function ludo_perso() {
+        return $this->belongsToMany(Jeu::class, 'achats')
+            ->as('achat')
+            ->withPivot('prix', 'lieu', 'date_achat');
+    }
+
 }
