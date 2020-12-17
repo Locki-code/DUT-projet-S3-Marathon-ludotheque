@@ -1,7 +1,4 @@
 
-    {{--
-        from https://www.codeply.com/go/5Lu0E8graQ/bootstrap-4-user-profile-template
-    --}}
 
     <div class="container">
         <div class="row my-2">

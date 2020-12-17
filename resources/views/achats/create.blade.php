@@ -1,4 +1,4 @@
-@extends('base')
+
 
 @if ($errors->any())
     <div>
@@ -15,7 +15,7 @@
      'csrf_field' ajoute un champ caché qui permet de vérifier
        que le formulaire vient du serveur.
   --}}
-@section('content')
+
 <form method="POST" action="{{ URL::route('achat_store') }}">
     {!! csrf_field() !!}
     <input type="hidden" name="jeu_id" value="{{$jeu_id}}">
@@ -48,4 +48,4 @@
         <button class="btn btn-success" type="submit">Valider</button>
     </div>
 </form>
-@endsection
+

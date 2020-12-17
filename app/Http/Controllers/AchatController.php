@@ -25,8 +25,9 @@ class AchatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        return view('achats.create',['jeu_id' => $id]);
     }
 
     /**

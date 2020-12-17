@@ -1,4 +1,4 @@
-@extends('base')
+
 {{--
    messages d'erreurs dans la saisie du formulaire.
 --}}
@@ -17,7 +17,7 @@
      'csrf_field' ajoute un champ caché qui permet de vérifier
        que le formulaire vient du serveur.
   --}}
-@section('content')
+
 <form action="{{route('ludotheques.store')}}" class="form-tot" method="POST">
     {!! csrf_field() !!}
     <div class="text-center" style="margin-top: 2rem">
@@ -174,4 +174,4 @@
         <button class="btn btn-success" type="submit">Valider</button>
     </div>
 </form>
-@endsection
+
