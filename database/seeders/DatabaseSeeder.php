@@ -40,19 +40,44 @@ class DatabaseSeeder extends Seeder {
         $user_ids = User::all()->pluck('id');
         $jeu = new Jeu();
         $jeu->theme_id = Theme::where('nom','Autres')->pluck('id')->first();
-        $jeu->nom='Monopoly';
-        $jeu->description='Jeu à 4 joueurs';
-        $jeu->regles='Chacun pour soi';
+        $jeu->nom='Andor';
+        $jeu->description='Jeu de 2 à 4 joueurs. \n Plongez dans un univers de légendes épiques et de hauts faits héroïques.
+        Andor est un jeu de plateau et d\'aventures qui se joue en mode coopératif et vous plonge dans un univers de légendes épiques et de hauts faits héroïques';
+        $jeu->regles='';
         $jeu->user_id=5;
-        $jeu->editeur_id = 5;
-        $jeu->editeur_id = 5;
-        $jeu->langue='français';
-        $jeu->url_media='http://www.monopolypedia.fr/editions/indexeditions.php';
+        $ed = new Editeur();
+        $ed->nom = 'lello';
+        $ed->save();
+        $jeu->editeur_id = Editeur::where('nom','lello')->pluck('id')->first();
+        $jeu->langue='anglais';
+        $jeu->url_media='https://images-na.ssl-images-amazon.com/images/I/91MSg3Y%2BcOL._AC_SY355_.jpg';
         $jeu->age=10;
         $jeu->nombre_joueurs=4;
-        $jeu->duree='1 heure';
-        $jeu->categorie='Familiale';
+        $jeu->duree='2 hours';
+        $jeu->categorie='Jeu d\'Ambiance';
         $jeu->save();
+
+
+        $jeu2 = new Jeu();
+        $jeu2->theme_id = Theme::where('nom','Autres')->pluck('id')->first();
+        $jeu2->nom='Andor';
+        $jeu2->description='Jeu de 2 à 4 joueurs. \n Plongez dans un univers de légendes épiques et de hauts faits héroïques.
+        Andor est un jeu de plateau et d\'aventures qui se joue en mode coopératif et vous plonge dans un univers de légendes épiques et de hauts faits héroïques';
+        $jeu2->regles='';
+        $jeu2->user_id=5;
+        $ed = new Editeur();
+        $ed->nom = 'lello';
+        $ed->save();
+        $jeu2->editeur_id = Editeur::where('nom','lello')->pluck('id')->first();
+        $jeu2->langue='anglais';
+        $jeu2->url_media='https://www.espritjeu.com/upload/image/andor-p-image-49244-grande.jpg';
+        $jeu2->age=10;
+        $jeu2->nombre_joueurs=4;
+        $jeu2->duree='2 hours';
+        $jeu2->categorie='Jeu d\'Ambiance';
+        $jeu2->save();
+
+
         foreach ($jeux as $jeu) {
             $nbMecs = $faker->numberBetween(1, 3);
             $mecs = $faker->randomElements($mecanisque_ids, $nbMecs);
