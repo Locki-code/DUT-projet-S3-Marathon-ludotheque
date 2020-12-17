@@ -59,6 +59,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function commentaires(){
+        return $this->hasMany(Commentaire::class);
+    }
+
     function ajout(){
         return $this -> belongsToMany(Jeu::class, 'achats')
             ->as('achat')

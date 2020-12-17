@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\LudothequeController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,9 @@ Route::get('/ludotheques/{sort?}', [LudothequeController::class, 'index'])->name
 Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoires'])->name('dashboard');
 
 Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
+
+Route::get('commentaires/create/{id}', [CommentaireController::Class,'create'])->name('commentaire_create');
+
+Route::post('commentaires/create', [CommentaireController::Class,'store'])->name('commentaire_store');
+
+

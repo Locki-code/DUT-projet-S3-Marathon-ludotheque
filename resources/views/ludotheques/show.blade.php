@@ -39,7 +39,7 @@
 </div>
 <div>
     {{-- le nombre de joueur --}}
-    <p><strong>Nombre de joueur : </strong>{{$ludotheque->nombre_joueur}}</p>
+    <p><strong>Nombre de joueurs : </strong>{{$ludotheque->nombre_joueur}}</p>
 </div>
 <div>
     {{-- la durée --}}
@@ -67,6 +67,8 @@
     <p><strong>Nombre total d'utilisateurs sur le site : </strong>{{$prixMin = DB::table('users')->select('id')->count('id')}}</p>
 </div>
 
+
+
 @if($action == 'delete')
     <form action="{{route('ludotheques.destroy',$ludotheque->id)}}" method="POST">
         @csrf
@@ -76,8 +78,34 @@
             <button type="submit" name="delete" value="annule">Annuler</button>
         </div>
     </form>
-@else
+@endif
     <div>
         <a href="{{route('ludotheques.index')}}">Retour à la liste de jeux</a>
     </div>
-@endif
+<table class="table-auto">
+    <thead>
+    <tr>
+        <th>Note: </th>
+        <th>Commentaire : </th>
+        <th>Posté le :</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($commentaires as $com)
+        <tr>
+            <td>{{$com->note}}</td>
+            <td>{{$com->commentaire}}</td>
+            <td>{{$com->date_com}}</td>
+        </tr>
+
+    @endforeach
+
+
+    <div>
+        <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}">Ajouter un commentaire</a>
+    </div>
+
+
+
+
+
