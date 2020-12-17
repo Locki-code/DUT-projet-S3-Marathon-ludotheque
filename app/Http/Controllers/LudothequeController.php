@@ -195,4 +195,6 @@ class LudothequeController extends Controller
         $jeu = $jeux->find($id);
         return view('ludotheques.regle', ['ludotheque' => $jeu]);
     }
+
+
 }
