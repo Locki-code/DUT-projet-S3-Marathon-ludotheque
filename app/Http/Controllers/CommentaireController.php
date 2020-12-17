@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
+use App\Models\Smartphone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,11 +102,15 @@ class CommentaireController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\Models\Commentaire $commentaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request, Commentaire $commentaire) {
+        $this->authorize('delete', $commentaire);
+        if ($request->delete == 'valide') {
+            $commentaire->delete();
+            return redirect()->route('smartphones.index');
+        }
+        return redirect()->route('smartphones.show', $smartphone->id);
     }
 }
