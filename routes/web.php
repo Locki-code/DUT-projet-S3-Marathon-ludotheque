@@ -62,3 +62,6 @@ Route::post('achats/create', [AchatController::Class,'store'])->name('achat_stor
 Route::get('profil', [AchatController::Class,'create'])->name('profil');
 
 Route::middleware(['auth'])->get('profil', [UserController::Class,'show'])->name('profil');
+
+Route::get('commentaire/supprime/{id}',[CommentaireController::class, 'afficheCommentaire'])->name('commentaire_affiche');
+Route::delete('/commentaire/{id}',[CommentaireController::class,'supprimeCommentaire'])->name('supprimeCommentaire');
