@@ -115,6 +115,7 @@ class LudothequeController extends Controller
         $commentaires = DB::table('commentaires')
             ->select()
             ->where('jeu_id','=',$id)
+            ->orderBy('date_com', 'desc')
             ->get();
 
         return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires]);
