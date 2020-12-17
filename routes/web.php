@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AchatController;
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\LudothequeController;
 use Illuminate\Support\Facades\Route;
@@ -48,4 +49,6 @@ Route::get('commentaires/create/{id}', [CommentaireController::Class,'create'])-
 
 Route::post('commentaires/create', [CommentaireController::Class,'store'])->name('commentaire_store');
 
+Route::get('achats/create/{id}', [AchatController::Class,'create'])->name('achat_create');
 
+Route::post('achats/create', [AchatController::Class,'store'])->name('achat_store');

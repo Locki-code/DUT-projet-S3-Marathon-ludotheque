@@ -29,6 +29,7 @@ class Jeu extends Model {
     function mecaniques() {
         return $this->belongsToMany(Mecanique::class, 'avec_mecaniques');
     }
+
     function acheteurs() {
         return $this->belongsToMany(User::class, 'achats')
             ->as('achat')

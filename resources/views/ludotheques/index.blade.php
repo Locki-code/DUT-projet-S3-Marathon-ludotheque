@@ -30,10 +30,17 @@
                     <td>{{$ludotheque->duree}}</td>--}}
 
                     <td>
-                            <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
-                               class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-eye"></i>
-                            </a>
+                        <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
+                           class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="{{route('achat_create',[$ludotheque->id])}}"
+                           class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+                            <i class="fas fa-shopping-basket"></i>
+                        </a>
                     </td>
                 </tr>
 

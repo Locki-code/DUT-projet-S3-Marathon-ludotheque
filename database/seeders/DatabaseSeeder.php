@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder {
             ]
         );
         $faker = Factory::create('fr_FR');
-        $jeux = Jeu::factory(10)->create();
+        $jeux = Jeu::factory(50)->create();
         $mecanisque_ids = Mecanique::all()->pluck('id');
         $user_ids = User::all()->pluck('id');
         $jeu = new Jeu();
