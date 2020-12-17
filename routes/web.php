@@ -47,7 +47,7 @@ Route::get('/ludotheques/{sort?}', [LudothequeController::class, 'index'])->name
 
 //Route::get('/ludotheques/random',[LudothequeController::Class,'random']) -> name('random');
 
-Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoires'])->name('dashboard');
+Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoiresEtMeilleurs'])->name('dashboard');
 
 Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
 
