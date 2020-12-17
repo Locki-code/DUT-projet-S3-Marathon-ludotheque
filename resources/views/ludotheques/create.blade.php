@@ -1,8 +1,7 @@
+@extends('base')
 {{--
    messages d'erreurs dans la saisie du formulaire.
 --}}
-
-
 @if ($errors->any())
     <div>
         <ul>
@@ -18,8 +17,8 @@
      'csrf_field' ajoute un champ caché qui permet de vérifier
        que le formulaire vient du serveur.
   --}}
-
-<form action="{{route('ludotheques.store')}}" method="POST">
+@section('content')
+<form action="{{route('ludotheques.store')}}" class="form-tot" method="POST">
     {!! csrf_field() !!}
     <div class="text-center" style="margin-top: 2rem">
         <h3>Ajout d'un jeu</h3>
@@ -46,7 +45,7 @@
                   placeholder="regle..">{{ old('regle') }}</textarea>
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- la langue du jeu  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Langue : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -68,7 +67,7 @@
                value="{{ old('url_media') }}">
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- l'age pour jouer  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Age : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -84,7 +83,7 @@
         </div>
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- nombre de joueurs  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Nombre de joueurs : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -108,7 +107,7 @@
         </div>
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- la catégorie  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Catégorie : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -126,7 +125,7 @@
         </div>
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- la durée  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Durée : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -144,7 +143,7 @@
         </div>
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- le thème  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Thème : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -158,7 +157,7 @@
         </div>
     </div>
 
-    <div class='w-full md:w-full px-3 mb-6'>
+    <div class="form-index">
         {{-- l'éditeur'  --}}
         <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Editeur : </label>
         <div class="flex-shrink w-full inline-block relative">
@@ -175,3 +174,4 @@
         <button class="btn btn-success" type="submit">Valider</button>
     </div>
 </form>
+@endsection

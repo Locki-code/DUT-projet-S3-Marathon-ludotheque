@@ -1,4 +1,4 @@
-@extends('base.master')
+@extends('base')
 @section('content')
     @if ($errors->any())
         <div>
@@ -10,12 +10,9 @@
         </div>
     @endif
 
-    <div class="container mx-auto px-4">
-        <div class="flex justify-end">
-            <a href="{{route('ludotheques.create')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu</button></a>
-        </div>
-        <div class="flex justify-end">
-            <a href="{{ URL::route('ludotheques.index', $sort) }}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
+    <div class="container-form mx-auto px-4">
+        <div class="btn-ajouter-jeu">
+            <a href="{{route('ludotheques.create')}}"><button class="text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu</button></a>
         </div>
 
         <div class="text-center" style="margin-top: 2rem">
@@ -23,8 +20,8 @@
             <hr class="mt-2 mb-2">
         </div>
 
-        <form action="#" method="GET">
-            <div class='w-full md:w-full px-3 mb-6'>
+        <form action="#" class="form-index" method="GET">
+            <div class='w-full md:w-full px-3'>
                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Editeur : </label>
                 <div class="flex-shrink w-full inline-block relative">
                     <select name="editeur_id"  value="{{ old('editeur_id') }}"
@@ -42,8 +39,8 @@
             </div>
         </form>
 
-        <form action=# method="GET">
-            <div class='w-full md:w-full px-3 mb-6'>
+        <form action=# class="form-index" method="GET">
+            <div class='w-full md:w-full px-3'>
                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Thème : </label>
                 <div class="flex-shrink w-full inline-block relative">
                     <select name="theme_id"  value="{{ old('theme_id') }}"
@@ -60,8 +57,8 @@
             </div>
         </form>
 
-        <form action=# method="GET">
-            <div class='w-full md:w-full px-3 mb-6'>
+        <form action=# class="form-index" method="GET">
+            <div class='w-full md:w-full px-3'>
                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Mecanique : </label>
                 <div class="flex-shrink w-full inline-block relative">
                     <select name="mecanique_id"  value="{{ old('mecanique_id') }}"
@@ -79,47 +76,42 @@
         </form>
 
 
-        <h1>Liste des jeux</h1>
-        <table class="table-auto">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Photo</th>
-                {{--<th>Durée</th>
-                <th>Nombre de joueurs</th>--}}
-            </tr>
-            </thead>
-            <tbody>
+        <div class="text-center" style="margin-top: 2rem">
+            <div class="container-tri">
+            <h3> Liste des jeux </h3>
+                <a href="{{ URL::route('ludotheques.index', $sort)}}"><div style="float: right; margin-top: -25px;">Trié par nom</div> @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
+            </div>
+            <hr class="mt-2 mb-2">
+        </div>
+        <div class="container-jeu">
             @foreach($ludotheques as $ludotheque)
-                <tr>
-                    <td>{{$ludotheque->nom}}</td>
+                <div class="item-jeu">
+                    <span>{{$ludotheque->nom}}</span>
                     {{--<td>{{$ludotheque->description}}</td>
                     <td>{{$ludotheque->regle}}</td>
                     <td>{{$ludotheque->langue}}</td>--}}
-                    <td><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></td>
+                    <div class="container-img-jeu"><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></div>
                     {{--<td>{{$ludotheque->age}}</td>
                     <td>{{$ludotheque->nombre_joueurs}}</td>
                     <td>{{$ludotheque->categorie}}</td>
                     <td>{{$ludotheque->duree}}</td>--}}
+                    <div class="container-btn-jeu">
+                        <div>
+                            <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
+                               class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
 
-                    <td>
-                        <a href="{{route('ludotheques.show',[$ludotheque->id, 'action'=>'show'])}}"
-                           class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                    </td>
-
-                    <td>
-                        <a href="{{route('achat_create',[$ludotheque->id])}}"
-                           class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
-                            <i class="fas fa-shopping-basket"></i>
-                        </a>
-                    </td>
-                </tr>
-
+                        <div>
+                            <a href="{{route('achat_create',[$ludotheque->id])}}"
+                               class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+                                <i class="fas fa-shopping-basket"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-            </tbody>
-        </table>
+        </div>
     </div>
-
 @endsection

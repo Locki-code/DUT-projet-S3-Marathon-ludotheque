@@ -1,7 +1,10 @@
+@extends('base')
+@section('content')
 <div class="text-center" style="margin-top: 2rem">
     @if($action == 'delete')
         <h3>Suppression d'un jeu</h3>
     @else
+
         <h3>Affichage d'un jeu</h3>
     @endif
     <hr class="mt-2 mb-2">
@@ -19,6 +22,12 @@
     {{-- la photo  --}}
     <p><strong>Photo  : </strong><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></p>
 </div>
+<div>
+    {{--Le classement de ce jeu dans l'ensemble des jeux ayant le même thème.--}}
+    <p><strong>Position du jeu dans le théme : </strong>{{ $jeuxInformation->getRankInTheme() }}
+        sur {{ $jeuxInformation->getNbRankInTheme() }}</p>
+</div>
+
 
 
 <div>
@@ -61,7 +70,7 @@
     {{-- nombre d'urilisateurs qui possèdent le jeu --}}
     <p><strong>Nombre d'utilisateurs qui possèdent le jeu : </strong>{{$nbUtiJeu = DB::table('achats')->join('jeux', 'jeu_id', '=', 'id')->select('prix')->where('id', $ludotheque->id)->count('prix')}}</p>
 </div>
-</div>
+
 <div>
     {{-- nombre d'utilisateurs sur le site  --}}
     <p><strong>Nombre total d'utilisateurs sur le site : </strong>{{$nbUtil = DB::table('users')->select('id')->count('id')}}</p>
@@ -85,7 +94,7 @@
 <div>
     {{--Le nombre de commentaires total pour tous les jeux--}}
     <p><strong>Le nombre de commentaires total pour tous les jeux : </strong>{{App\Models\Commentaire::all()->count('*')}}</p>
-</div>
+    </div>
 
 
 @if($action == 'delete')
@@ -101,6 +110,9 @@
 <div>
     <a href="{{route('ludotheques.index')}}">Retour à la liste de jeux</a>
 </div>
+<br>
+<br>
+<br>
 <table class="table-auto">
     <thead>
     <tr>
@@ -109,18 +121,30 @@
         <th>Posté le :</th>
     </tr>
     </thead>
-    <tbody>
     @foreach($commentaires as $com)
         <tr>
             <td>{{$com->note}}</td>
             <td>{{$com->commentaire}}</td>
             <td>{{$com->date_com}}</td>
+            <td>{{$com->date_com}}</td>
+
+
+            <td>
+                <a href="{{route('commentaire_affiche',$com->id)}}"
+                   class="bg-red-400 cursor-pointer rounded p-1 mx-1 text-white">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+
+
         </tr>
 
     @endforeach
 
 
     <div>
-        <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}"><i class="fas fa-comments"></i></a>
+        <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}">Ajouter un commentaire <i class="fas fa-comments"></i></a>
     </div>
+    </div>
+@endsection
 

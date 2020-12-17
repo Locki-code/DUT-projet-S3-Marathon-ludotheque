@@ -27,6 +27,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete-achat', function ($user, $achat) {
             return $user->id === $achat->user_id;
         });
+
+        Gate::define('delete-commentaire', function ($user, $commentaire) {
+            return $user->id === $commentaire->user_id;
+        });
         //
     }
 }

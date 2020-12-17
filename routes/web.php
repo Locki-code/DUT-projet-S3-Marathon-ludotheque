@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 
 Route::get('/enonce', function () {
@@ -47,7 +47,7 @@ Route::get('/ludotheques/{sort?}', [LudothequeController::class, 'index'])->name
 
 //Route::get('/ludotheques/random',[LudothequeController::Class,'random']) -> name('random');
 
-Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoires'])->name('dashboard');
+Route::middleware(['auth'])->get('/dashboard', [\App\Http\Controllers\HomeController::class, 'cinqAleatoiresEtMeilleurs'])->name('dashboard');
 
 Route::get('/ludotheques/regle/{id}', [LudothequeController::class, 'regle']);
 
@@ -70,3 +70,6 @@ Route::prefix('user')->middleware('auth')->group(function () {
 
 Route::delete('/achat/{id}', [UserController::class, 'supprimeAchat'])->name('user.supprimeAchat');
 
+
+Route::get('commentaire/supprime/{id}',[CommentaireController::class, 'afficheCommentaire'])->name('commentaire_affiche');
+Route::delete('/commentaire/{id}',[CommentaireController::class,'supprimeCommentaire'])->name('supprimeCommentaire');

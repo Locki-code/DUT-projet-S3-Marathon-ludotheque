@@ -1,7 +1,4 @@
-{{--
-   messages d'erreurs dans la saisie du formulaire.
---}}
-
+@extends('base')
 
 @if ($errors->any())
     <div>

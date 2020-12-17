@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
+use App\Models\Smartphone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Policies\CommentairePolicy;
 
 class CommentaireController extends Controller
 {
@@ -101,11 +104,32 @@ class CommentaireController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\Models\Commentaire $commentaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request, Commentaire $commentaire) {
+        $this->authorize('delete', $commentaire);
+        if ($request->delete == 'valide') {
+            $commentaire->delete();
+            return redirect()->route('smartphones.index');
+        }
+        return redirect()->route('smartphones.show', $smartphone->id);
+    }
+
+    public function afficheCommentaire($id) {
+        $user = Auth::user();
+        $commentaires = Commentaire::find($id);
+        return view('commentaires.afficheCommentaire',['commentaire'=>$commentaires]);
+    }
+
+    public function supprimeCommentaire(Request $request,$id) {
+        if($request->delete == 'valide') {
+            $user = Auth::user()->id;
+            $commentaire = Commentaire::find($id);
+            if($user === $commentaire->user_id )
+                $commentaire->delete();
+        }
+
+        return redirect()->route('ludotheques.index');
     }
 }
