@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Theme;
 use App\Models\Editeur;
 use App\Models\Jeu;
@@ -9,6 +10,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class LudothequeController extends Controller
 {
@@ -89,10 +92,23 @@ class LudothequeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /*
+App\Models\Commentaire::where(function($query){
+    $query->select('avg(note)','jeu_id')
+        ->groupBy('jeu_id')
+        ->having('avg(note)','>=',function ($quer){
+            $quer->where('jeu_id',$ludotheque->id)
+                ->avg('note');
+        });
+})->count()
+*/
+
     public function show(Request $request, $id) {
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action]);
+        $classement = Commentaire::select('avg(note)','jeu_id')->groupBy('jeu_id');
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'classement' => $classement]);
     }
 
     /**
