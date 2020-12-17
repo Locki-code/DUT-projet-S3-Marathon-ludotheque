@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AchatController;
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\LudothequeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +59,6 @@ Route::get('achats/create/{id}', [AchatController::Class,'create'])->name('achat
 
 Route::post('achats/create', [AchatController::Class,'store'])->name('achat_store');
 
-//Route::get('profil', [AchatController::Class,'create'])->name('profil');
+Route::get('profil', [AchatController::Class,'create'])->name('profil');
 
 Route::middleware(['auth'])->get('profil', [UserController::Class,'show'])->name('profil');
