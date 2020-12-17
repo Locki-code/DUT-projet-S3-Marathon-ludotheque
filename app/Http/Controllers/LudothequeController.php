@@ -111,28 +111,35 @@ class LudothequeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    /*
-App\Models\Commentaire::where(function($query){
-    $query->select('avg(note)','jeu_id')
-        ->groupBy('jeu_id')
-        ->having('avg(note)','>=',function ($quer){
-            $quer->where('jeu_id',$ludotheque->id)
-                ->avg('note');
-        });
-})->count()
-*/
+    public function classement($id){
+        //$classement = Commentaire::all()->select('jeu_id')->groupBy('jeu_id')->avg('note')->orderBy('desc');
+        $classement = Commentaire::all()->reject('jeu_id')->groupBy('jeu_id')->sortByDesc('avg(note)');
+        /*$x=0;
+        foreach ($classement as $cla){
+            if ($cla->jeu_id=$id){
+                break;
+            }
+            $x++;
+        }*/
+        return $classement;
+    }
 
     public function show(Request $request, $id) {
         $action = $request->query('action', 'show');
         $ludotheque = Jeu::find($id);
-
         $commentaires = DB::table('commentaires')
             ->select()
             ->where('jeu_id','=',$id)
             ->get();
-        $classement = Commentaire::select('avg(note)','jeu_id')->groupBy('jeu_id');
-
-        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires]);
+        //$classement = DB::table('Commentaire')->join('Jeu','Commentaire.jeu_id','=','Jeu.id')->select('avg(Commentaire.note)')->groupBy('Commentaire.jeu_id')->having('avg(Commentaire.note)','>=',$commentaires->avg('note'))->orderBy('note');
+        /*$classement = Jeu::all();
+        $classe = array();
+        foreach ($classement as $class){
+            $classe[] = ['avg'=>Commentaire::where('jeu_id',$class->id)->avg('note'),'jeu_id'=>$class->id];
+        }
+        $classe = $classe->orderBy('avg','desc');*/
+        $classement=$this->classement($id);
+        return view('ludotheques.show', ['ludotheque' => $ludotheque, 'action' => $action,'commentaires'=>$commentaires,'classe',$classement]);
     }
 
     /**

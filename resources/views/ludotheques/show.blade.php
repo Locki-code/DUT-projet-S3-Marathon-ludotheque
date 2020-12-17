@@ -19,6 +19,8 @@
     {{-- la photo  --}}
     <p><strong>Photo  : </strong><img src="https://i.pravatar.cc/150?u=fake@pravatar.com" class="card-img-top" alt="avatar"></p>
 </div>
+
+
 <div>
     {{-- le thème  --}}
     <p><strong>Thème : </strong>{{$ludotheque->theme->nom}}</p>
@@ -64,8 +66,6 @@
     {{-- nombre d'utilisateurs sur le site  --}}
     <p><strong>Nombre total d'utilisateurs sur le site : </strong>{{$prixMin = DB::table('users')->select('id')->count('id')}}</p>
 </div>
-
-
 <div>
     {{--La note moyenne de ce jeu--}}
     <p><strong>La note moyenne de ce jeu : </strong>{{App\Models\Commentaire::where('jeu_id',$ludotheque->id)->avg('note')}}</p>
@@ -90,8 +90,7 @@
 <div>
     {{--Le classement de ce jeu dans l'ensemble des jeux ayant le même thème--}}
     <p><strong>Le classement de ce jeu dans l'ensemble des jeux ayant le même thème : </strong>
-        {{--$classement->where('note','>=',function($query){
-    $query->select('note')->where('jeu_id',$ludotheque->id)->get();})->count()--}}
+        {{$classe}}
     </p>
 </div>
 
@@ -105,9 +104,9 @@
         </div>
     </form>
 @endif
-    <div>
-        <a href="{{route('ludotheques.index')}}">Retour à la liste de jeux</a>
-    </div>
+<div>
+    <a href="{{route('ludotheques.index')}}">Retour à la liste de jeux</a>
+</div>
 <table class="table-auto">
     <thead>
     <tr>
@@ -130,8 +129,4 @@
     <div>
         <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}">Ajouter un commentaire</a>
     </div>
-
-
-
-
 
