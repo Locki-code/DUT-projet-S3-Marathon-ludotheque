@@ -11,7 +11,7 @@ class Jeu extends Model {
     protected $table = 'jeux';
     public $timestamps = false;
 
-    const LANGUES = ['Français', 'Allemand', 'Suisse', 'Espagnole', 'Suédois'];
+    const LANGUES = ['Français', 'Allemand', 'Suisse', 'Espagnole', 'Suédois','Anglais'];
     const AGE = ['2', '4', '6', '8', '12', '14'];
     const NBJOUEUR = [2, 3, 4, 5, 6, 8];
     const DUREE = ['- de 10 Minute', 'Entre 10 et 20 Min', 'Une demi heure', 'une heure', 'Plus d\'une heure'];

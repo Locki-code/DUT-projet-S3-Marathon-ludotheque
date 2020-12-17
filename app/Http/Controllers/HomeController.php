@@ -31,16 +31,18 @@ class HomeController extends Controller
             $avg[$jeu->id]=$jeuNote->getAverage();
         }
         arsort($avg);
-        array_slice($avg,0,5);
         $x=5;
         $y=0;
         $best = [];
         foreach ($avg as $key => $avg) {
-            while($y<$x){
-                $best[] = Jeu::find($key);
-                $y++;
+            $best[] = Jeu::where('id','=',$key)->first();
+            $y++;
+            if ($x==$y){
+                break;
             }
         }
+        //dd($best);
+        //die();
         return view('aleatoire', ['ludotheques' => $ludotheques,'cinqMeilleurs'=>$best]);
     }
 
