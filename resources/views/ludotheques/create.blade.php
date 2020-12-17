@@ -2,8 +2,6 @@
 {{--
    messages d'erreurs dans la saisie du formulaire.
 --}}
-
-
 @if ($errors->any())
     <div>
         <ul>
