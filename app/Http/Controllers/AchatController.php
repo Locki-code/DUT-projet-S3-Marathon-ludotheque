@@ -109,8 +109,14 @@ class AchatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Achat $achat)
     {
+        $this->authorize('delete',$achat);
 
+        if($request->delete == 'valide') {
+            $achat->delete();
+            return redirect()->route('ludotheques.index');
+        }
+        return redirect()->route('ludotheques.index');
     }
 }

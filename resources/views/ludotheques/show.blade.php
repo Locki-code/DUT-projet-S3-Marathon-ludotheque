@@ -121,6 +121,6 @@
 
 
     <div>
-        <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}">Ajouter un commentaire</a>
+        <a href="{{route('commentaire_create',[ 'id' => $ludotheque->id, 'action'=>'create'])}}"><i class="fas fa-comments"></i></a>
     </div>
 
